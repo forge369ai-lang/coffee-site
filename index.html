@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Driftwood Coffee | Knysna</title>
+<meta name="description" content="Slow-roasted coffee, fresh bakes and lagoon views in the heart of Knysna.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f1e8;
+    --sand: #ead9c2;
+    --espresso: #2b1d14;
+    --roast: #5a3a26;
+    --copper: #c0703a;
+    --lagoon: #2f5d5a;
+    --ink: #2b1d14;
+    --muted: #6f5b4c;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.1; }
+  a { color: inherit; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+  /* Nav */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(247,241,232,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 1.35rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .logo span { color: var(--copper); }
+  .links { display: flex; gap: 28px; list-style: none; }
+  .links a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--muted); }
+  .links a:hover { color: var(--espresso); }
+  .btn { display: inline-block; background: var(--espresso); color: var(--cream); text-decoration: none; padding: 13px 26px; border-radius: 999px; font-weight: 600; font-size: .95rem; border: 0; cursor: pointer; font-family: inherit; transition: transform .15s, background .15s; }
+  .btn:hover { background: var(--roast); transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--espresso); border: 1.5px solid var(--espresso); }
+  .btn.ghost:hover { background: var(--espresso); color: var(--cream); }
+
+  /* Hero */
+  .hero { padding: 72px 0 88px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 600; color: var(--copper); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--lagoon); }
+  .hero p { font-size: 1.12rem; color: var(--muted); max-width: 30em; margin-bottom: 32px; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-art { aspect-ratio: 4/5; border-radius: 200px 200px var(--radius) var(--radius); background:
+      radial-gradient(circle at 50% 38%, #f3e3cc 0 22%, transparent 22.5%),
+      radial-gradient(circle at 50% 38%, var(--roast) 0 27%, transparent 27.5%),
+      linear-gradient(180deg, #d9a273 0%, var(--copper) 45%, var(--lagoon) 45.2%, #23474a 100%);
+    position: relative; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(43,29,20,.45); }
+  .hero-art::after { content: "Open daily · 7am to 4pm"; position: absolute; left: 20px; bottom: 20px; background: var(--cream); padding: 10px 16px; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+  .steam { position: absolute; left: 50%; top: 10%; width: 60px; height: 70px; transform: translateX(-50%); }
+  .steam i { position: absolute; bottom: 0; width: 8px; height: 50px; border-radius: 8px; background: rgba(247,241,232,.6); animation: rise 3s ease-in-out infinite; }
+  .steam i:nth-child(1) { left: 8px; animation-delay: 0s; }
+  .steam i:nth-child(2) { left: 26px; animation-delay: .8s; }
+  .steam i:nth-child(3) { left: 44px; animation-delay: 1.6s; }
+  @keyframes rise { 0% { opacity: 0; transform: translateY(20px) scaleY(.6); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(-20px) scaleY(1.1); } }
+
+  section { padding: 88px 0; }
+  .section-head { text-align: center; max-width: 620px; margin: 0 auto 52px; }
+  .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
+  .section-head p { color: var(--muted); }
+
+  /* Menu */
+  #menu { background: var(--espresso); color: var(--cream); }
+  #menu .section-head p { color: #cdbba6; }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .menu-card { background: rgba(247,241,232,.06); border: 1px solid rgba(247,241,232,.12); border-radius: var(--radius); padding: 30px; }
+  .menu-card h3 { font-size: 1.5rem; margin-bottom: 20px; color: #f0c9a4; }
+  .item { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px dashed rgba(247,241,232,.18); }
+  .item:last-child { border-bottom: 0; }
+  .item strong { font-weight: 600; display: block; }
+  .item small { color: #b9a68f; font-size: .85rem; }
+  .price { font-family: Fraunces, serif; font-weight: 600; white-space: nowrap; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .about-art { aspect-ratio: 1; border-radius: var(--radius); background:
+      repeating-linear-gradient(90deg, var(--sand) 0 18px, #e2ccb0 18px 36px); position: relative; }
+  .about-art::before { content: ""; position: absolute; inset: 18% ; border-radius: 50%; background: radial-gradient(circle, var(--roast) 0 55%, var(--espresso) 56% 100%); box-shadow: 0 20px 40px -18px rgba(43,29,20,.6); }
+  .about h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 20px; }
+  .about p { color: var(--muted); margin-bottom: 16px; }
+  .stats { display: flex; gap: 36px; margin-top: 28px; }
+  .stats div strong { font-family: Fraunces, serif; font-size: 2rem; display: block; color: var(--lagoon); }
+  .stats div span { font-size: .88rem; color: var(--muted); }
+
+  /* Visit + Contact */
+  #contact { background: var(--sand); }
+  .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; }
+  .info-card, .form-card { background: var(--cream); border-radius: var(--radius); padding: 36px; }
+  .info-card h3, .form-card h3 { font-size: 1.6rem; margin-bottom: 18px; }
+  .info-row { margin-bottom: 18px; }
+  .info-row b { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--copper); margin-bottom: 4px; }
+  form { display: grid; gap: 16px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  label { font-size: .88rem; font-weight: 500; display: grid; gap: 6px; }
+  input, textarea, select { font: inherit; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--sand); background: #fff; color: var(--ink); }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--copper); }
+  textarea { min-height: 120px; resize: vertical; }
+  .thanks { display: none; background: var(--lagoon); color: var(--cream); padding: 16px 18px; border-radius: 12px; font-weight: 500; }
+
+  footer { background: var(--espresso); color: #cdbba6; padding: 36px 0; font-size: .9rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 860px) {
+    .links { display: none; }
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-art { max-width: 380px; margin-inline: auto; width: 100%; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .row-2 { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .hero { padding: 48px 0 64px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo">Driftwood <span>Coffee</span></a>
+    <ul class="links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+    <a href="#contact" class="btn">Book a table</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Knysna · On the lagoon</p>
+        <h1>Slow coffee for <em>lagoon</em> mornings.</h1>
+        <p>Small-batch roasts, bakes from our own oven and the best view in town. Pull up a chair, stay a while.</p>
+        <div class="cta-row">
+          <a href="#menu" class="btn">See the menu</a>
+          <a href="#contact" class="btn ghost">Find us</a>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Illustration of a coffee cup above the Knysna lagoon">
+        <div class="steam"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The Menu</p>
+        <h2>Made fresh, every morning</h2>
+        <p>Our beans are roasted weekly in small batches. Everything else comes out of our oven before the doors open.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Coffee</h3>
+          <div class="item"><div><strong>Flat White</strong><small>Double shot, silky milk</small></div><span class="price">R38</span></div>
+          <div class="item"><div><strong>Cappuccino</strong><small>Classic, with a cocoa dust</small></div><span class="price">R36</span></div>
+          <div class="item"><div><strong>Lagoon Cold Brew</strong><small>Steeped 18 hours</small></div><span class="price">R42</span></div>
+          <div class="item"><div><strong>Pour Over</strong><small>Ask for today's single origin</small></div><span class="price">R45</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>Bakery</h3>
+          <div class="item"><div><strong>Butter Croissant</strong><small>Laminated in-house</small></div><span class="price">R32</span></div>
+          <div class="item"><div><strong>Cinnamon Knot</strong><small>Brown sugar, cardamom</small></div><span class="price">R34</span></div>
+          <div class="item"><div><strong>Banana Bread</strong><small>Toasted, with butter</small></div><span class="price">R38</span></div>
+          <div class="item"><div><strong>Lemon Polenta Cake</strong><small>Gluten free</small></div><span class="price">R42</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>Breakfast</h3>
+          <div class="item"><div><strong>Smashed Avo</strong><small>Sourdough, feta, chilli</small></div><span class="price">R85</span></div>
+          <div class="item"><div><strong>Oyster Mushroom Toast</strong><small>Thyme, garlic, poached egg</small></div><span class="price">R92</span></div>
+          <div class="item"><div><strong>Granola Bowl</strong><small>Yoghurt, berries, honey</small></div><span class="price">R72</span></div>
+          <div class="item"><div><strong>The Fisherman's</strong><small>Smoked snoek, scrambled eggs</small></div><span class="price">R110</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div class="about-art" role="img" aria-label="Illustration of a coffee cup from above on a wooden table"></div>
+      <div>
+        <p class="eyebrow">Our Story</p>
+        <h2>Built from driftwood and stubbornness.</h2>
+        <p>Driftwood started as a coffee cart on the Waterfront with one grinder and a lot of hope. Locals kept coming back, so we found a little corner with a view of the lagoon and built our counter from wood that washed up on the shore.</p>
+        <p>We still roast every bean ourselves, we still know most of our regulars by name, and we still think the best mornings start slowly.</p>
+        <div class="stats">
+          <div><strong>2018</strong><span>First cup poured</span></div>
+          <div><strong>12</strong><span>Origins roasted</span></div>
+          <div><strong>1</strong><span>Very good view</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Visit Us</p>
+        <h2>Come say hello</h2>
+        <p>Booking for a group, planning an event, or just have a question? Send us a message.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="info-card">
+          <h3>Find us</h3>
+          <div class="info-row"><b>Address</b>Waterfront Drive, Knysna, 6570</div>
+          <div class="info-row"><b>Hours</b>Monday to Sunday<br>7:00am to 4:00pm</div>
+          <div class="info-row"><b>Phone</b>044 000 0000</div>
+          <div class="info-row"><b>Email</b>hello@driftwoodcoffee.co.za</div>
+        </div>
+        <div class="form-card">
+          <h3>Send a message</h3>
+          <form id="contact-form">
+            <div class="row-2">
+              <label>Name <input name="name" required placeholder="Your name"></label>
+              <label>Email <input name="email" type="email" required placeholder="you@example.com"></label>
+            </div>
+            <label>What's it about?
+              <select name="topic">
+                <option>Table booking</option>
+                <option>Private event</option>
+                <option>Wholesale coffee</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label>Message <textarea name="message" required placeholder="Tell us a bit more..."></textarea></label>
+            <button class="btn" type="submit">Send message</button>
+            <p class="thanks" id="thanks">Thanks! We've got your message and will get back to you soon.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Driftwood Coffee, Knysna</span>
+    <span>Roasted with love on the Garden Route</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    this.reset();
+    document.getElementById('thanks').style.display = 'block';
+  });
+</script>
+</body>
+</html>
