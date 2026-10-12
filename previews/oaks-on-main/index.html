@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Oaks on Main | Knysna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1F3527;--bg:#FFFFFF;--soft:#E8EEE4;--accent:#24412F;--pop:#D9A441;--muted:#5E6B60;--d:"Bricolage Grotesque",Georgia,serif;--b:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--b);color:var(--ink);background:var(--bg);font-size:1.06rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pop);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.preview{background:var(--ink);color:#fff;text-align:center;font-size:.85rem;padding:9px 16px;opacity:.92}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-family:var(--d);font-size:1.6rem;font-weight:700;text-decoration:none;letter-spacing:-.01em}
+.nav nav{display:flex;gap:28px;font-weight:500}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.9}.btn:active{transform:scale(.97)}
+.btn-main{background:var(--accent);color:#fff}
+.btn-ghost{background:var(--soft);color:var(--ink)}
+.nav .btn{padding:11px 22px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:24px 0 90px}
+.kind{color:var(--muted);font-weight:500;margin-bottom:18px}
+h1{font-family:var(--d);font-weight:700;font-size:clamp(2.8rem,5.6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:24px}
+.intro{font-size:1.2rem;color:var(--muted);max-width:30em;margin-bottom:32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.rating{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.stars{color:var(--pop);letter-spacing:2px}
+.rating span{color:var(--muted);font-weight:400}
+.award{display:inline-block;margin-top:14px;background:var(--pop);color:var(--ink);font-weight:700;font-size:.92rem;padding:8px 16px;border-radius:999px}
+.hero-img{aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:var(--soft)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+section{padding:96px 0}
+.soft{background:var(--soft)}
+h2{font-family:var(--d);font-weight:700;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:44px}
+.known{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.k{background:var(--bg);border-radius:22px;padding:30px 26px}
+.k h3{font-family:var(--d);font-size:1.4rem;font-weight:700;margin-bottom:10px;line-height:1.15}
+.k p{color:var(--muted);font-size:1rem}
+.gallery{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:16px}
+.gallery img{min-width:0;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;background:var(--soft)}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.visit p.lead{color:var(--muted);font-size:1.15rem;margin:-20px 0 30px;max-width:26em}
+dl{display:grid;grid-template-columns:auto 1fr;gap:12px 36px;font-size:1.08rem}
+dt{font-weight:600}dd{color:var(--muted)}
+.card{background:var(--accent);color:#fff;border-radius:28px;padding:40px}
+.card h3{font-family:var(--d);font-size:1.9rem;font-weight:700;margin-bottom:18px;line-height:1.1}
+.card p{opacity:.85;margin-bottom:6px}
+.card .big{font-size:1.5rem;font-weight:700;opacity:1;margin:16px 0 26px;display:block;text-decoration:none}
+.card .btn{background:#fff;color:var(--accent)}
+footer{padding:40px 0 56px;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:900px){.nav nav{display:none}.hero,.visit{grid-template-columns:1fr}.hero{gap:32px;padding-bottom:64px}.known{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:1/-1;aspect-ratio:16/10}section{padding:72px 0}}
+@media(max-width:520px){.known{grid-template-columns:1fr}.card{padding:30px}}
+</style>
+</head>
+<body>
+<div class="preview">Website preview prepared for Oaks on Main by Jay Steenkamp</div>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#">Oaks on Main</a>
+    <nav aria-label="Main"><a href="#known">About</a><a href="#gallery">Gallery</a><a href="#visit">Visit</a></nav>
+    <a class="btn btn-main" href="#known">See what&#x27;s here</a>
+  </header>
+  <main>
+    <div class="hero">
+      <div>
+        <p class="kind">Garden shops &amp; eateries in Knysna</p>
+        <h1>A garden in the middle of town.</h1>
+        <p class="intro">Little shops, good coffee and fresh food under the oaks on Main Road. Sit anywhere and order from any of the eateries around the garden.</p>
+        <div class="ctas">
+          <a class="btn btn-main" href="#known">See what&#x27;s here</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Oaks+on+Main+28+Main+Rd+Knysna" target="_blank" rel="noopener">Get directions</a>
+        </div>
+        <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span>4.6 on Google <span>from 112 reviews</span></div>
+        
+      </div>
+      <div class="hero-img"><img src="https://images.unsplash.com/photo-1551887196-72e32bfc7bf3?auto=format&fit=crop&w=1400&q=80" alt="" fetchpriority="high"></div>
+    </div>
+  </main>
+</div>
+<section class="soft" id="known">
+  <div class="wrap">
+    <h2>Spend a morning here</h2>
+    <div class="known"><div class="k"><h3>Coffee, roasted close by</h3><p>Settle in with a proper flat white and a slow morning.</p></div><div class="k"><h3>Food from a few kitchens</h3><p>Shared seating, so everyone gets what they feel like.</p></div><div class="k"><h3>Shops to browse</h3><p>Clothing, jewellery, gifts and more, all around the garden.</p></div><div class="k"><h3>Room for the kids</h3><p>A little play area, and chameleons hiding in the trees.</p></div></div>
+  </div>
+</section>
+<section id="gallery">
+  <div class="wrap gallery"><img loading="lazy" src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt=""><img loading="lazy" src="https://images.unsplash.com/photo-1559001724-fbad036dbc9e?auto=format&fit=crop&w=800&q=80" alt=""><img loading="lazy" src="https://images.unsplash.com/photo-1717607424466-b4d26351a765?auto=format&fit=crop&w=800&q=80" alt=""></div>
+</section>
+<section class="soft" id="visit">
+  <div class="wrap visit">
+    <div>
+      <h2>Come and see us</h2>
+      <p class="lead">28 Main Road, Knysna. Shared garden seating for all the eateries.</p>
+      <dl><dt>Monday to Friday</dt><dd>8am to 5pm</dd><dt>Saturday</dt><dd>8am to 2pm</dd><dt>Sunday</dt><dd>9am to 2pm</dd></dl>
+    </div>
+    <div class="card">
+      <h3>Get in touch</h3>
+      <p>28 Main Road, Knysna</p>
+      <a class="big" href="tel:+27824673060">082 467 3060</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=28+Main+Road+Knysna+Oaks+on+Main" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>Oaks on Main, Knysna</span><span>082 467 3060</span></div></footer>
+</body>
+</html>

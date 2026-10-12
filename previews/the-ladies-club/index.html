@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Ladies Club | Knysna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#151515;--bg:#FFFFFF;--soft:#F3ECE6;--accent:#151515;--pop:#C9A08F;--muted:#6A625D;--d:"Bodoni Moda",Georgia,serif;--b:"Jost",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--b);color:var(--ink);background:var(--bg);font-size:1.06rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pop);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.preview{background:var(--ink);color:#fff;text-align:center;font-size:.85rem;padding:9px 16px;opacity:.92}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-family:var(--d);font-size:1.6rem;font-weight:700;text-decoration:none;letter-spacing:-.01em}
+.nav nav{display:flex;gap:28px;font-weight:500}
+.nav nav a{text-decoration:none;color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 28px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;transition:transform .15s,opacity .15s}
+.btn:hover{opacity:.9}.btn:active{transform:scale(.97)}
+.btn-main{background:var(--accent);color:#fff}
+.btn-ghost{background:var(--soft);color:var(--ink)}
+.nav .btn{padding:11px 22px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:24px 0 90px}
+.kind{color:var(--muted);font-weight:500;margin-bottom:18px}
+h1{font-family:var(--d);font-weight:700;font-size:clamp(2.8rem,5.6vw,5rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:24px}
+.intro{font-size:1.2rem;color:var(--muted);max-width:30em;margin-bottom:32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.rating{display:inline-flex;align-items:center;gap:10px;font-weight:600}
+.stars{color:var(--pop);letter-spacing:2px}
+.rating span{color:var(--muted);font-weight:400}
+.award{display:inline-block;margin-top:14px;background:var(--pop);color:var(--ink);font-weight:700;font-size:.92rem;padding:8px 16px;border-radius:999px}
+.hero-img{aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:var(--soft)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+section{padding:96px 0}
+.soft{background:var(--soft)}
+h2{font-family:var(--d);font-weight:700;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:44px}
+.known{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.k{background:var(--bg);border-radius:22px;padding:30px 26px}
+.k h3{font-family:var(--d);font-size:1.4rem;font-weight:700;margin-bottom:10px;line-height:1.15}
+.k p{color:var(--muted);font-size:1rem}
+.gallery{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:16px}
+.gallery img{min-width:0;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;background:var(--soft)}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.visit p.lead{color:var(--muted);font-size:1.15rem;margin:-20px 0 30px;max-width:26em}
+dl{display:grid;grid-template-columns:auto 1fr;gap:12px 36px;font-size:1.08rem}
+dt{font-weight:600}dd{color:var(--muted)}
+.card{background:var(--accent);color:#fff;border-radius:28px;padding:40px}
+.card h3{font-family:var(--d);font-size:1.9rem;font-weight:700;margin-bottom:18px;line-height:1.1}
+.card p{opacity:.85;margin-bottom:6px}
+.card .big{font-size:1.5rem;font-weight:700;opacity:1;margin:16px 0 26px;display:block;text-decoration:none}
+.card .btn{background:#fff;color:var(--accent)}
+footer{padding:40px 0 56px;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:900px){.nav nav{display:none}.hero,.visit{grid-template-columns:1fr}.hero{gap:32px;padding-bottom:64px}.known{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:1/-1;aspect-ratio:16/10}section{padding:72px 0}}
+@media(max-width:520px){.known{grid-template-columns:1fr}.card{padding:30px}}
+</style>
+</head>
+<body>
+<div class="preview">Website preview prepared for The Ladies Club by Jay Steenkamp</div>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#">The Ladies Club</a>
+    <nav aria-label="Main"><a href="#known">About</a><a href="#gallery">Gallery</a><a href="#visit">Visit</a></nav>
+    <a class="btn btn-main" href="tel:+27443822669">Call to book</a>
+  </header>
+  <main>
+    <div class="hero">
+      <div>
+        <p class="kind">Ladies&#x27; hair salon in Knysna</p>
+        <h1>Be treated like a queen.</h1>
+        <p class="intro">Washes, blow-dries, colour and treatments on Main Road, with coffee served in fine china while you&#x27;re pampered. Walk-ins welcome.</p>
+        <div class="ctas">
+          <a class="btn btn-main" href="tel:+27443822669">Call to book</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The+Ladies+Club+51+Main+Rd+Knysna" target="_blank" rel="noopener">Get directions</a>
+        </div>
+        <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span>4.7 on Google <span>from 22 reviews</span></div>
+        
+      </div>
+      <div class="hero-img"><img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?auto=format&fit=crop&w=1400&q=80" alt="" fetchpriority="high"></div>
+    </div>
+  </main>
+</div>
+<section class="soft" id="known">
+  <div class="wrap">
+    <h2>Come in for</h2>
+    <div class="known"><div class="k"><h3>Wash and blow-dry</h3><p>In and out looking polished. No booking? Pop in.</p></div><div class="k"><h3>Special occasions</h3><p>Weddings and big family days, handled with care.</p></div><div class="k"><h3>Colour and treatments</h3><p>Expert colour and treatments for healthy, happy hair.</p></div><div class="k"><h3>A proper cup of coffee</h3><p>Served in the best china. Because you deserve it.</p></div></div>
+  </div>
+</section>
+<section id="gallery">
+  <div class="wrap gallery"><img loading="lazy" src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80" alt=""><img loading="lazy" src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=800&q=80" alt=""><img loading="lazy" src="https://images.unsplash.com/photo-1595475884562-073c30d45670?auto=format&fit=crop&w=800&q=80" alt=""></div>
+</section>
+<section class="soft" id="visit">
+  <div class="wrap visit">
+    <div>
+      <h2>Come and see us</h2>
+      <p class="lead">51 Main Road, Knysna. Walk-ins welcome.</p>
+      <dl><dt>Monday to Friday</dt><dd>8:30am to 5pm</dd><dt>Saturday</dt><dd>8:30am to 2pm</dd><dt>Sunday</dt><dd>Closed</dd></dl>
+    </div>
+    <div class="card">
+      <h3>Get in touch</h3>
+      <p>51 Main Road, Knysna</p>
+      <a class="big" href="tel:+27443822669">044 382 2669</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=51+Main+Road+Knysna+The+Ladies+Club" target="_blank" rel="noopener">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>The Ladies Club, Knysna</span><span>044 382 2669</span></div></footer>
+</body>
+</html>
