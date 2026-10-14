@@ -1,9 +1,10 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "/",
       "has": [{ "type": "host", "value": "drive-in-dog-parlour.vercel.app" }],
-      "destination": "/previews/drive-in-dog-parlour/index.html"
-    }
+      "dest": "/previews/drive-in-dog-parlour/index.html"
+    },
+    { "handle": "filesystem" }
   ]
 }
