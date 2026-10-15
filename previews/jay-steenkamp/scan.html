@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Online Presence Score · Jay Steenkamp</title>
+<meta name="description" content="Free 60-second scan of your website, Google listing and social media. Get a score out of 100 and the fixes that matter most.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F3EFE7; --paper-2:#E8E2D6; --ink:#15201A; --ink-2:#59625A;
+  --green:#1E5A3E; --green-ink:#F7F3EA; --flare:#FF6A2B; --note:#FFD95A;
+  --card:#FFFDF8; --line:rgba(21,32,26,.14); --ok:#2E8B57; --mid:#E0A100; --bad:#E04E1B;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
+  --green:#9ED3AE; --green-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
+  --card:#1A231D; --line:rgba(238,233,222,.14); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
+  --green:#9ED3AE; --green-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
+  --card:#1A231D; --line:rgba(238,233,222,.14); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:100%;max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-display);font-weight:850;font-stretch:118%;line-height:.95;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(46px,8.5vw,108px)}
+h2{font-size:clamp(32px,5vw,58px)}
+h3{font-size:clamp(22px,2.4vw,28px);font-stretch:105%}
+p{margin:0}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:12px}
+.brand{font-family:var(--f-display);font-weight:800;font-stretch:120%;font-size:20px;text-decoration:none}
+.brand span{color:var(--flare)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px var(--f-body);text-decoration:none;border-radius:999px;padding:13px 22px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--green);border-color:var(--green);color:var(--green-ink)}
+.btn.small{padding:9px 14px;font-size:14px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+
+.step{display:none;padding-block:clamp(40px,8vw,90px)}
+.step.on{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--ink-2);display:flex;gap:12px;align-items:center;margin-bottom:22px}
+.eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--flare)}
+.lede{font-size:clamp(18px,2vw,22px);color:var(--ink-2);margin-top:24px;max-width:46ch}
+.checks{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.checks span{border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-size:15px;background:var(--card)}
+
+form.start{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3.5vw,34px);display:grid;gap:18px;max-width:640px}
+label.f{display:grid;gap:8px;font-weight:600;font-size:15px}
+input[type=text],input[type=url]{font:500 18px var(--f-body);padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+input:focus{outline:none;border-color:var(--green)}
+.tick{display:flex;gap:10px;align-items:center;font-size:16px;color:var(--ink-2);cursor:pointer}
+.tick input{width:20px;height:20px;accent-color:var(--green)}
+
+.qs{display:grid;gap:16px;margin-top:34px}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,26px)}
+.qcard .lab{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.qcard .lab .mono{color:var(--flare)}
+.qcard p.q{font-weight:600;font-size:clamp(18px,2vw,21px);margin-top:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.opts button{font:500 16px var(--f-body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.opts button:hover{border-color:var(--ink)}
+.opts button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.status{position:sticky;bottom:0;margin-top:26px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:14px 0 calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.status .live{display:flex;gap:12px;align-items:center;color:var(--ink-2);font-size:15px}
+.spin{width:18px;height:18px;border-radius:50%;border:2.5px solid var(--line);border-top-color:var(--green);animation:sp 0.9s linear infinite;flex:none}
+.spin.done{animation:none;border-color:var(--ok);background:var(--ok)}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.res-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,56px);align-items:center}
+.ring{position:relative;width:clamp(180px,30vw,250px);aspect-ratio:1}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:14}
+.ring .bg{stroke:var(--paper-2)}
+.ring .fg{stroke:var(--green);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1),stroke .3s}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring .num b{font-family:var(--f-display);font-weight:900;font-stretch:120%;font-size:clamp(56px,9vw,84px);line-height:1}
+.ring .num small{display:block;color:var(--ink-2);font-size:15px;margin-top:4px}
+.grade{display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:999px;font-weight:700;font-size:15px;background:var(--note);color:#3a2f05}
+.bars{display:grid;gap:18px;margin-top:44px}
+.bar .row{display:flex;justify-content:space-between;font-weight:600}
+.bar .row span:last-child{font-family:var(--f-mono);font-size:15px}
+.bar .tr{height:12px;border-radius:99px;background:var(--paper-2);margin-top:8px;overflow:hidden}
+.bar .tr b{display:block;height:100%;width:0;border-radius:99px;background:var(--green);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.fixes{margin-top:50px}
+.fix{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
+.fix .n{font-family:var(--f-display);font-weight:900;font-stretch:120%;font-size:34px;line-height:1;color:var(--flare);width:44px}
+.fix h3{font-size:clamp(19px,2vw,23px)}
+.fix p{color:var(--ink-2);margin-top:6px;font-size:16px}
+.fix .pts{font-family:var(--f-mono);font-size:13px;white-space:nowrap;background:var(--paper-2);padding:5px 10px;border-radius:99px}
+details.more{margin-top:10px;border-top:1px solid var(--line);padding-top:14px}
+details.more summary{cursor:pointer;font-weight:600}
+.good{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px}
+.good span{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ink);border-radius:99px;padding:6px 12px;font-size:14px}
+.good span:before{content:"✓ ";color:var(--ok);font-weight:800}
+.cta{margin-top:56px;background:var(--green);color:var(--green-ink);border-radius:26px;padding:clamp(24px,5vw,48px);display:grid;gap:18px}
+.cta h2{font-size:clamp(30px,4.6vw,52px)}
+.cta .btn{background:var(--green-ink);color:var(--green);border-color:var(--green-ink);justify-self:start}
+.cta .row{display:flex;gap:12px;flex-wrap:wrap}
+.cta .btn.ghost{background:transparent;color:var(--green-ink)}
+.note{font-size:14px;color:var(--ink-2);margin-top:22px}
+footer{border-top:1px solid var(--line);padding-block:26px;color:var(--ink-2);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:640px){
+  .res-head{grid-template-columns:1fr;justify-items:start}
+  .fix{grid-template-columns:auto 1fr}
+  .fix .pts{grid-column:2;justify-self:start}
+  .top .btn{padding:9px 13px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/">Jay Steenkamp<span>.</span></a>
+  <a class="btn small" href="/">Back to site</a>
+</div></header>
+
+<main>
+<!-- STEP 1 -->
+<section class="step on" id="s1"><div class="wrap">
+  <div class="eyebrow mono"><i></i>Free · 60 seconds · no sign-up</div>
+  <h1>How good is your business online?</h1>
+  <p class="lede">Get a score out of 100 for your website, Google listing and social media, plus the fixes that will make the biggest difference.</p>
+  <div class="checks"><span>Website speed on a phone</span><span>Security</span><span>Google search basics</span><span>Click-to-call &amp; WhatsApp</span><span>Google reviews</span><span>Social media</span></div>
+  <form class="start" id="startForm" novalidate>
+    <label class="f">Business name<input type="text" id="biz" required autocomplete="organization" placeholder="e.g. Seaside Bakery"></label>
+    <label class="f" id="urlWrap">Website address<input type="url" id="url" inputmode="url" autocomplete="url" placeholder="e.g. seasidebakery.com"></label>
+    <label class="tick"><input type="checkbox" id="nosite">I don't have a website yet</label>
+    <button class="btn solid" type="submit" id="go">Start my free scan</button>
+  </form>
+</div></section>
+
+<!-- STEP 2 -->
+<section class="step" id="s2"><div class="wrap">
+  <div class="eyebrow mono"><i></i>Scanning <span id="bizLabel"></span></div>
+  <h2>While we check your website, answer 7 quick questions.</h2>
+  <p class="lede" style="margin-top:16px">Just tap the answer that fits. Be honest, nobody else sees this.</p>
+  <div class="qs" id="qs"></div>
+  <div class="status">
+    <div class="live"><span class="spin" id="spin"></span><span id="liveTxt">Checking your website…</span></div>
+    <button class="btn solid" id="see" disabled>See my score</button>
+  </div>
+</div></section>
+
+<!-- STEP 3 -->
+<section class="step" id="s3"><div class="wrap">
+  <div class="res-head">
+    <div class="ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="ringFg" cx="60" cy="60" r="52" pathLength="1"/></svg>
+      <div class="num"><div><b id="total">0</b><small>out of 100</small></div></div></div>
+    <div>
+      <span class="grade" id="grade"></span>
+      <h2 id="resTitle"></h2>
+      <p class="lede" id="resLede" style="margin-top:14px"></p>
+    </div>
+  </div>
+  <div class="bars" id="bars"></div>
+  <div class="fixes">
+    <span class="mono" style="color:var(--flare)">Fix these first</span>
+    <h2 style="margin-top:12px">Your top 3 fixes</h2>
+    <div id="top3" style="margin-top:22px"></div>
+    <details class="more" id="moreWrap"><summary id="moreSum"></summary><div id="more"></div></details>
+  </div>
+  <div class="good" id="good"></div>
+  <div class="cta">
+    <span class="mono">Want these fixed for you?</span>
+    <h2>Send me your score and I'll tell you exactly what I'd fix first.</h2>
+    <p>Free, no obligation. Whether you work with me or not, you'll know where to start.</p>
+    <div class="row"><a class="btn" id="waBtn" target="_blank" rel="noopener" href="#">Send my score on WhatsApp</a><button class="btn ghost" id="again" type="button">Scan another business</button></div>
+  </div>
+  <p class="note" id="note"></p>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Jay Steenkamp</span><span>Websites · Apps · Automation</span></div></footer>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const WA = '27615826878';
+  const state = { biz:'', url:'', nosite:false, site:null, psi:null, siteDone:false, psiDone:false, ans:{} };
+
+  const Q = [
+    {id:'gbp', sec:'Google', q:'Do you have a Google Business Profile (you show up on Google Maps)?', o:[['yes','Yes'],['unsure','Not sure'],['no','No']]},
+    {id:'rating', sec:'Google', q:'What is your Google star rating?', o:[['45','4.5 or higher'],['40','4.0 to 4.4'],['low','Under 4.0'],['none','No reviews yet']]},
+    {id:'reviews', sec:'Google', q:'Roughly how many Google reviews do you have?', o:[['50','50+'],['20','20 to 49'],['5','5 to 19'],['0','Under 5']]},
+    {id:'reply', sec:'Google', q:'Do you reply to your reviews?', o:[['always','Always'],['some','Sometimes'],['never','Never']]},
+    {id:'social', sec:'Social', q:'Where is your business active? Tap all that apply.', multi:true, o:[['fb','Facebook'],['ig','Instagram'],['tt','TikTok'],['li','LinkedIn'],['none','None']]},
+    {id:'post', sec:'Social', q:'How often do you post?', o:[['weekly','Weekly or more'],['monthly','About monthly'],['rarely','Rarely or never']]},
+    {id:'wa', sec:'Contact', q:'Can customers message you on WhatsApp?', o:[['biz','Yes, WhatsApp Business'],['personal','Yes, my personal number'],['no','No']]}
+  ];
+
+  // build questions
+  const qs = $('qs');
+  Q.forEach((q,i)=>{
+    const c = document.createElement('div'); c.className='qcard';
+    c.innerHTML = `<div class="lab"><span class="mono">${q.sec}</span><span class="mono" style="color:var(--ink-2)">${i+1} / ${Q.length}</span></div><p class="q">${q.q}</p><div class="opts" role="group"></div>`;
+    const box = c.querySelector('.opts');
+    q.o.forEach(([v,l])=>{
+      const b = document.createElement('button'); b.type='button'; b.textContent=l; b.setAttribute('aria-pressed','false');
+      b.onclick = ()=>{
+        if(q.multi){
+          let cur = state.ans[q.id] || [];
+          if(v==='none'){ cur = cur.includes('none')?[]:['none']; }
+          else { cur = cur.filter(x=>x!=='none'); cur = cur.includes(v)?cur.filter(x=>x!==v):[...cur,v]; }
+          state.ans[q.id]=cur;
+          box.querySelectorAll('button').forEach((bb,j)=>bb.setAttribute('aria-pressed', cur.includes(q.o[j][0])?'true':'false'));
+        } else {
+          state.ans[q.id]=v;
+          box.querySelectorAll('button').forEach(bb=>bb.setAttribute('aria-pressed', bb===b?'true':'false'));
+        }
+        check();
+      };
+      box.appendChild(b);
+    });
+    qs.appendChild(c);
+  });
+
+  $('nosite').onchange = e => { $('urlWrap').style.display = e.target.checked?'none':''; };
+
+  function show(id){ document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on', s.id===id)); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  $('startForm').onsubmit = e => {
+    e.preventDefault();
+    const biz = $('biz').value.trim(); const url = $('url').value.trim(); const nosite = $('nosite').checked;
+    if(!biz){ $('biz').focus(); return; }
+    if(!nosite && !url){ $('url').focus(); $('url').placeholder='Add your website, or tick the box below'; return; }
+    Object.assign(state,{biz,url,nosite,site:null,psi:null,siteDone:nosite,psiDone:nosite,ans:{}});
+    qs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));
+    $('bizLabel').textContent = biz;
+    if(nosite){ $('liveTxt').textContent='No website to check, so this is all about Google and social.'; $('spin').classList.add('done'); }
+    else { $('spin').classList.remove('done'); $('liveTxt').textContent='Checking your website…'; runScans(url); }
+    check(); show('s2');
+  };
+
+  function runScans(url){
+    const full = /^https?:\/\//i.test(url)?url:'https://'+url;
+    fetch('/api/scan?url='+encodeURIComponent(url)).then(r=>r.json()).then(d=>{state.site=d}).catch(()=>{state.site={ok:false,error:'failed'}}).finally(()=>{state.siteDone=true; $('liveTxt').textContent = state.psiDone?'Scan complete.':'Testing your speed on a phone (this one takes up to 30 seconds)…'; check();});
+    const ps = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=PERFORMANCE&category=SEO&url='+encodeURIComponent(full);
+    const ctrl = new AbortController(); const t = setTimeout(()=>ctrl.abort(), 60000);
+    fetch(ps,{signal:ctrl.signal}).then(r=>r.ok?r.json():null).then(d=>{
+      if(d && d.lighthouseResult){ const c=d.lighthouseResult.categories; state.psi={perf:c.performance?c.performance.score:null, seo:c.seo?c.seo.score:null}; }
+    }).catch(()=>{}).finally(()=>{clearTimeout(t); state.psiDone=true; if(state.siteDone) $('liveTxt').textContent='Scan complete.'; check();});
+  }
+
+  function check(){
+    const answered = Q.every(q=> q.multi ? (state.ans[q.id]||[]).length : state.ans[q.id]);
+    const done = state.siteDone && state.psiDone;
+    if(done){ $('spin').classList.add('done'); }
+    $('see').disabled = !(answered && done);
+    if(!answered && done) $('liveTxt').textContent = 'Scan complete. Answer the questions to see your score.';
+    if(answered && !done) $('liveTxt').textContent = 'Almost there, still testing your speed…';
+    if(answered && done) $('liveTxt').textContent = 'All done. Your score is ready.';
+  }
+
+  $('see').onclick = () => { render(score()); show('s3'); };
+  $('again').onclick = () => { $('startForm').reset(); $('urlWrap').style.display=''; show('s1'); };
+
+  function score(){
+    const a = state.ans, s = state.site, p = state.psi;
+    const sec = { web:{got:0,max:40}, google:{got:0,max:35}, social:{got:0,max:25} };
+    const fixes = [], good = [];
+    const add = (k,pts,max,okTxt,fix) => { sec[k].got += pts; if(pts>=max){ if(okTxt) good.push(okTxt); } else if(fix){ fixes.push({lost:max-pts, ...fix}); } };
+    let note = '';
+
+    // WEBSITE (40)
+    if(state.nosite){
+      fixes.push({lost:40, t:'Get a simple website', d:'Without one, people who search for you find nothing to click and go to a competitor who has one. A clean one-page site with your services, prices and a WhatsApp button covers most of this.'});
+    } else if(!s || !s.ok){
+      fixes.push({lost:40, t:'Your website did not load', d:'We could not open '+state.url+'. If a customer can\'t either, you\'re losing them. Check the address is right and the hosting is paid up.'});
+      note = 'If your website address was typed wrong, scan again with the correct one.';
+    } else {
+      add('web',8,8,'Website is online');
+      add('web',s.https?4:0,4,'Secure (https)',{t:'Make your website secure',d:'Browsers show a "Not secure" warning on sites without https. It\'s usually a free setting with your host.'});
+      add('web',s.viewport?4:0,4,'Built for phones',{t:'Make it work on phones',d:'Your site isn\'t set up for small screens, and most of your visitors are on a phone.'});
+      if(p && p.perf!=null){
+        const pts = Math.round(p.perf*8);
+        add('web',pts,8,'Fast on a phone',{t:'Speed up your website',d:'Your site scored '+Math.round(p.perf*100)+'/100 for speed on a phone. Every extra second of loading loses visitors. Big images are usually the culprit.'});
+      } else { sec.web.got += 4; note = 'The phone speed test was busy, so speed was scored as average. Try again later for an exact number.'; }
+      if(p && p.seo!=null){ add('web',Math.round(p.seo*3),3,'Google search basics',{t:'Fix your Google search basics',d:'Google scored your page '+Math.round(p.seo*100)+'/100 on the basics it needs to show you in search.'}); } else sec.web.got += 2;
+      const seoPts = (s.title?2:0)+(s.description?2:0);
+      add('web',seoPts,4,'Title and description for Google',{t:'Add a proper title and description',d:'This is the text Google shows in search results. '+(!s.title?'Your page has no title. ':'')+(!s.description?'Your page has no description, so Google guesses one.':'')});
+      add('web',(s.phoneLink||s.whatsapp)?4:0,4,'Tap-to-call or WhatsApp button',{t:'Add a WhatsApp or tap-to-call button',d:'Visitors on a phone want to tap once to reach you. Right now they have to copy your number.'});
+      const socPts = ((s.facebook||s.instagram)?2:0)+(s.maps?1:0);
+      add('web',socPts,3,'Links to your socials and map',{t:'Link your socials and Google Maps',d:'Connect your website to your Facebook or Instagram and your Google Maps listing so customers (and Google) can join the dots.'});
+      add('web',s.ogImage?2:0,2,'Nice preview when shared',{t:'Add a share image',d:'When someone shares your link on WhatsApp or Facebook, it shows a blank box instead of a photo.'});
+      if(s.form||s.email) good.push('Contact form or email');
+    }
+
+    // GOOGLE (35)
+    const gbp = {yes:10,unsure:3,no:0}[a.gbp];
+    add('google',gbp,10,'On Google Maps',{t:a.gbp==='no'?'Create your free Google Business Profile':'Claim your Google Business Profile',d:'This is the box people see when they search your name or "near me". It\'s free and is often the first impression a customer gets.'});
+    const rt = {'45':8,'40':5,low:2,none:0}[a.rating];
+    add('google',rt,8,'Strong star rating',{t:a.rating==='none'?'Get your first reviews':'Lift your star rating',d:'Most people won\'t contact a business under 4 stars. Ask your happiest customers for a review straight after a good job, with a direct link.'});
+    const rv = {'50':7,'20':5,'5':2,'0':0}[a.reviews];
+    add('google',rv,7,'Plenty of reviews',{t:'Get more Google reviews',d:'More reviews mean more trust and a higher spot on Maps. Send a review link by WhatsApp after every sale.'});
+    const rp = {always:5,some:2,never:0}[a.reply];
+    add('google',rp,5,'Replies to reviews',{t:'Reply to every review',d:'Replies show customers someone is home, and Google rewards active profiles. Two lines is enough.'});
+    if(a.gbp==='yes') { sec.google.got += 5; } else { fixes.push({lost:5,t:'Add photos and opening hours',d:'Listings with photos and correct hours get far more calls and direction requests.'}); }
+
+    // SOCIAL (25)
+    const soc = (a.social||[]).filter(x=>x!=='none');
+    add('social',soc.length>=2?9:soc.length===1?6:0,9,'Active on social media',{t:soc.length?'Add a second platform':'Start one social media page',d:soc.length?'Being on two platforms (for example Facebook and Instagram) reaches people who never use the other.':'Customers check social media to see if you\'re real and active. Start with one platform and do it well.'});
+    const po = {weekly:8,monthly:4,rarely:1}[a.post];
+    add('social',soc.length?po:0,8,'Posts regularly',{t:'Post once a week',d:'A page with no posts for months looks closed. One simple post a week (a job, a tip, a happy customer) is enough.'});
+    const w = {biz:5,personal:2,no:0}[a.wa];
+    add('social',w,5,'WhatsApp Business',{t:a.wa==='no'?'Let customers WhatsApp you':'Switch to WhatsApp Business',d:'It\'s free and gives you a business profile, auto-greetings, away messages and quick replies.'});
+    const linked = !state.nosite && s && s.ok && (s.facebook||s.instagram);
+    add('social',linked?3:0,3,null,state.nosite?null:{t:'Link your socials from your website',d:'Add your Facebook or Instagram icons to your site so people can see you\'re active.'});
+
+    let total = 0; Object.values(sec).forEach(v=>{ v.got=Math.max(0,Math.min(v.max,Math.round(v.got))); total+=v.got; });
+    fixes.sort((x,y)=>y.lost-x.lost);
+    return {total, sec, fixes, good, note};
+  }
+
+  function render(r){
+    const t = r.total;
+    const g = t>=80?['Strong','You\'re doing most things right.','A few small fixes will put you clearly ahead of your competitors.']:
+              t>=60?['Good, with gaps','Good foundations, but customers are slipping through.','Fix the three things below and you\'ll feel the difference in calls and messages.']:
+              t>=40?['Leaking customers','People are finding you, then leaving.','The fixes below are where your customers are going missing. Most are quick.']:
+                    ['Mostly invisible','Most customers can\'t find you online yet.','The good news: the biggest wins are at the top of this list, and most are free.'];
+    $('grade').textContent = g[0]; $('resTitle').textContent = g[1]; $('resLede').textContent = g[2];
+    const col = t>=70?'var(--ok)':t>=45?'var(--mid)':'var(--bad)';
+    const fg = $('ringFg'); fg.style.stroke = col; fg.style.transition='none'; fg.style.strokeDashoffset = 1;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ fg.style.transition=''; fg.style.strokeDashoffset = 1 - t/100; }));
+    const start = performance.now(); const el = $('total');
+    (function tick(n){ const k=Math.min(1,(n-start)/1600); el.textContent=Math.round(t*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(tick); })(start);
+
+    const names = {web:'Website',google:'Google listing',social:'Social & messaging'};
+    $('bars').innerHTML = Object.entries(r.sec).map(([k,v])=>`<div class="bar"><div class="row"><span>${names[k]}</span><span>${v.got} / ${v.max}</span></div><div class="tr"><b data-w="${(v.got/v.max*100).toFixed(0)}"></b></div></div>`).join('');
+    setTimeout(()=>document.querySelectorAll('.bar .tr b').forEach(b=>b.style.width=b.dataset.w+'%'),120);
+
+    const fx = (f,i)=>`<div class="fix"><span class="n">${String(i+1).padStart(2,'0')}</span><div><h3>${esc(f.t)}</h3><p>${esc(f.d)}</p></div><span class="pts">+${f.lost} pts</span></div>`;
+    $('top3').innerHTML = r.fixes.slice(0,3).map(fx).join('') || '<p>Nothing major to fix. Nice work.</p>';
+    const rest = r.fixes.slice(3);
+    $('moreWrap').style.display = rest.length?'':'none';
+    $('moreSum').textContent = 'See '+rest.length+' more fix'+(rest.length===1?'':'es');
+    $('more').innerHTML = rest.map((f,i)=>fx(f,i+3)).join('');
+    $('good').innerHTML = r.good.map(x=>`<span>${esc(x)}</span>`).join('');
+    $('note').textContent = r.note;
+    const msg = `Hi Jay, I ran the free online score for ${state.biz}. I scored ${t}/100. My top fix is: ${r.fixes[0]?r.fixes[0].t:'none'}. Can you help?`;
+    $('waBtn').href = 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+})();
+</script>
+</body>
+</html>

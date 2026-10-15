@@ -11,6 +11,16 @@
       "dest": "/previews/jay-steenkamp/index.html"
     },
     {
+      "src": "/scan/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/scan.html"
+    },
+    {
       "src": "/",
       "has": [
         {

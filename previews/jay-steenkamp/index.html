@@ -13,9 +13,9 @@
 <style>
 /* Layout: a single scroll journey. Chaos scene (pinned) resolves into a system grid, then a horizontal offer track, a drawn process line, a live self-test, and one closing ask. */
 :root{
-  --paper:#E8EDF2; --paper-2:#DCE3EA; --ink:#0D1824; --ink-2:#4A5868;
-  --cobalt:#2B46F0; --cobalt-ink:#FFFFFF; --flare:#FF5A36; --note:#FFE27A;
-  --card:#FFFFFF; --line:rgba(13,24,36,.14);
+  --paper:#F3EFE7; --paper-2:#E8E2D6; --ink:#15201A; --ink-2:#59625A;
+  --cobalt:#1E5A3E; --cobalt-ink:#F7F3EA; --flare:#FF6A2B; --note:#FFD95A;
+  --card:#FFFDF8; --line:rgba(21,32,26,.14);
   --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -23,13 +23,13 @@
   --gut-r:max(16px, env(safe-area-inset-right, 0px));
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --paper:#0B121A; --paper-2:#121C27; --ink:#E4EBF2; --ink-2:#93A2B3;
-  --cobalt:#6C83FF; --cobalt-ink:#0B121A; --flare:#FF7A5C; --note:#E9C95A;
-  --card:#152130; --line:rgba(228,235,242,.14); color-scheme:dark }}
+  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
+  --cobalt:#9ED3AE; --cobalt-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
+  --card:#1A231D; --line:rgba(238,233,222,.14); color-scheme:dark }}
 :root[data-theme="dark"]{
-  --paper:#0B121A; --paper-2:#121C27; --ink:#E4EBF2; --ink-2:#93A2B3;
-  --cobalt:#6C83FF; --cobalt-ink:#0B121A; --flare:#FF7A5C; --note:#E9C95A;
-  --card:#152130; --line:rgba(228,235,242,.14); color-scheme:dark }
+  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
+  --cobalt:#9ED3AE; --cobalt-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
+  --card:#1A231D; --line:rgba(238,233,222,.14); color-scheme:dark }
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.55;overflow-x:hidden}
@@ -81,7 +81,7 @@ p{margin:0;max-width:62ch}
 /* system network */
 .net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .net path{fill:none;stroke:var(--cobalt);stroke-width:2;stroke-linecap:round}
-.hub{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);background:var(--cobalt);color:var(--cobalt-ink);font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(15px,1.5vw,20px);padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 0 0 8px color-mix(in srgb,var(--cobalt) 22%,transparent),0 20px 40px rgba(13,24,36,.25)}
+.hub{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);background:var(--cobalt);color:var(--cobalt-ink);font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(15px,1.5vw,20px);padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 0 0 8px color-mix(in srgb,var(--cobalt) 22%,transparent),0 20px 40px rgba(21,32,26,.25)}
 .hub:before{content:"";position:absolute;inset:-8px;border-radius:inherit;border:2px solid var(--cobalt);animation:ping 2.2s ease-out infinite;opacity:0}
 @keyframes ping{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.5);opacity:0}}
 /* offers backdrop word */
@@ -102,7 +102,7 @@ p{margin:0;max-width:62ch}
 .stage{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .cell{position:relative;z-index:2;aspect-ratio:1.25/1;max-width:100%;border-radius:18px;will-change:transform}
 .face{position:absolute;inset:0;border-radius:inherit;padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.mess{box-shadow:0 18px 40px rgba(13,24,36,.18)}
+.mess{box-shadow:0 18px 40px rgba(21,32,26,.18)}
 .neat{background:var(--card);border:1px solid var(--line);opacity:0}
 .neat .k{color:var(--ink-2)}
 .neat .v{font-family:var(--f-display);font-weight:800;font-stretch:108%;font-size:clamp(20px,2vw,28px);line-height:1.05}
@@ -212,6 +212,7 @@ p{margin:0;max-width:62ch}
 footer{border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:26px;color:var(--ink-2);font-size:15px}
 
+@media (max-width:560px){.top .btn{padding:9px 13px;font-size:14px}.top .brand{font-size:17px}}
 @media (max-width:820px){
   body{font-size:17px}
   .stage{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -242,7 +243,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <div class="prog" id="prog"></div>
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">Jay Steenkamp<span>.</span></a>
-  <a class="btn solid" href="#talk">Book a free audit</a>
+  <nav style="display:flex;gap:10px;align-items:center"><a class="btn" href="/scan">Free online score</a><a class="btn solid" href="#talk">Book a free audit</a></nav>
 </div></header>
 
 <main id="top">
@@ -313,6 +314,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <!-- test -->
 <section class="test" id="test"><div class="wrap"><div class="grid">
   <div class="lead"><span class="mono" style="color:var(--flare)">The 30-second test</span><h2 style="margin-top:16px">Where is your time leaking?</h2><p>Tick everything that sounds like your week. Your score updates as you go.</p>
+    <p style="margin-top:14px"><a href="/scan" style="color:var(--cobalt);font-weight:600">Or score your whole online presence in 60 seconds &rarr;</a></p>
     <div class="score" aria-live="polite"><div class="big"><span id="sc">0</span><small>/6</small></div><p id="verdict">Start ticking. Be honest, nobody's watching.</p></div></div>
   <ul class="q" id="quiz">
     <li><label for="q1"><input type="checkbox" id="q1"><span>I type the same info into more than one place</span></label></li>
