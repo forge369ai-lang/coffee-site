@@ -10,22 +10,22 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{
-  --paper:#F3EFE7; --paper-2:#E8E2D6; --ink:#15201A; --ink-2:#59625A;
-  --green:#1E5A3E; --green-ink:#F7F3EA; --flare:#FF6A2B; --note:#FFD95A;
-  --card:#FFFDF8; --line:rgba(21,32,26,.14); --ok:#2E8B57; --mid:#E0A100; --bad:#E04E1B;
+  --paper:#FFFFFF; --paper-2:#F3F2EF; --ink:#111111; --ink-2:#5C5C5C;
+  --green:#111111; --green-ink:#FFFFFF; --flare:#F0561D; --note:#FFD95A;
+  --card:#FAFAF8; --line:rgba(17,17,17,.12); --ok:#2E8B57; --mid:#E0A100; --bad:#E04E1B;
   --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
-  --green:#9ED3AE; --green-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
-  --card:#1A231D; --line:rgba(238,233,222,.14); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }}
+  --paper:#0C0C0D; --paper-2:#151517; --ink:#F2F1EE; --ink-2:#A3A3A3;
+  --green:#F2F1EE; --green-ink:#0C0C0D; --flare:#FF7A42; --note:#E6C65A;
+  --card:#161618; --line:rgba(242,241,238,.13); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }}
 :root[data-theme="dark"]{
-  --paper:#0E1310; --paper-2:#161D18; --ink:#EEE9DE; --ink-2:#A0A89F;
-  --green:#9ED3AE; --green-ink:#0E1310; --flare:#FF8048; --note:#E6C65A;
-  --card:#1A231D; --line:rgba(238,233,222,.14); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }
+  --paper:#0C0C0D; --paper-2:#151517; --ink:#F2F1EE; --ink-2:#A3A3A3;
+  --green:#F2F1EE; --green-ink:#0C0C0D; --flare:#FF7A42; --note:#E6C65A;
+  --card:#161618; --line:rgba(242,241,238,.13); --ok:#6CCB8F; --mid:#F0C340; --bad:#FF7A4D; color-scheme:dark }
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.55;overflow-x:hidden}
 a{color:inherit}
@@ -92,7 +92,7 @@ input:focus{outline:none;border-color:var(--green)}
 .bar .row{display:flex;justify-content:space-between;font-weight:600}
 .bar .row span:last-child{font-family:var(--f-mono);font-size:15px}
 .bar .tr{height:12px;border-radius:99px;background:var(--paper-2);margin-top:8px;overflow:hidden}
-.bar .tr b{display:block;height:100%;width:0;border-radius:99px;background:var(--green);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar .tr b{display:block;height:100%;width:0;border-radius:99px;background:var(--flare);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 .fixes{margin-top:50px}
 .fix{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:start;padding:20px 0;border-top:1px solid var(--line)}
 .fix .n{font-family:var(--f-display);font-weight:900;font-stretch:120%;font-size:34px;line-height:1;color:var(--flare);width:44px}
