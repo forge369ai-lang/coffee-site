@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jay Steenkamp builds websites, apps and automations that take the repetitive work off small business owners.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Jay Steenkamp Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single scroll journey. Chaos scene (pinned) resolves into a system grid, then a horizontal offer track, a drawn process line, a live self-test, and one closing ask. */
+:root{
+  --paper:#E8EDF2; --paper-2:#DCE3EA; --ink:#0D1824; --ink-2:#4A5868;
+  --cobalt:#2B46F0; --cobalt-ink:#FFFFFF; --flare:#FF5A36; --note:#FFE27A;
+  --card:#FFFFFF; --line:rgba(13,24,36,.14);
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0B121A; --paper-2:#121C27; --ink:#E4EBF2; --ink-2:#93A2B3;
+  --cobalt:#6C83FF; --cobalt-ink:#0B121A; --flare:#FF7A5C; --note:#E9C95A;
+  --card:#152130; --line:rgba(228,235,242,.14); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0B121A; --paper-2:#121C27; --ink:#E4EBF2; --ink-2:#93A2B3;
+  --cobalt:#6C83FF; --cobalt-ink:#0B121A; --flare:#FF7A5C; --note:#E9C95A;
+  --card:#152130; --line:rgba(228,235,242,.14); color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-display);font-weight:850;font-stretch:118%;line-height:.95;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(52px,10vw,148px)}
+h2{font-size:clamp(40px,6.4vw,92px)}
+h3{font-size:clamp(26px,3vw,40px);font-stretch:105%}
+p{margin:0;max-width:62ch}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--f-display);font-weight:800;font-stretch:120%;font-size:20px;letter-spacing:-.01em;text-decoration:none}
+.brand span{color:var(--cobalt)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-body);font-weight:600;font-size:16px;text-decoration:none;border-radius:999px;padding:12px 20px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--cobalt);border-color:var(--cobalt);color:var(--cobalt-ink)}
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--cobalt);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+
+/* hero */
+.hero{padding-block:clamp(56px,10vw,120px) clamp(40px,6vw,72px)}
+.hero .eyebrow{color:var(--ink-2);margin-bottom:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--flare);display:inline-block}
+.hero h1 .run{color:var(--cobalt);display:inline-block}
+.hero .lede{font-size:clamp(19px,2vw,23px);color:var(--ink-2);margin-top:30px;max-width:44ch}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero .scrollcue{margin-top:56px;display:flex;align-items:center;gap:12px;color:var(--ink-2)}
+.scrollcue b{display:block;width:44px;height:2px;background:var(--ink-2);position:relative;overflow:hidden}
+.scrollcue b:after{content:"";position:absolute;inset:0;background:var(--cobalt);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* hero field */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:2}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 38%,#000 70%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 38%,#000 70%)}
+.wline{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+.wline > span{display:inline-block}
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;padding-block:18px;background:var(--paper)}
+.marq .row{display:flex;gap:0;width:max-content;font-family:var(--f-display);font-weight:850;font-stretch:122%;font-size:clamp(28px,4vw,54px);line-height:1;white-space:nowrap}
+.marq .row span{display:inline-flex;align-items:center;gap:48px;padding-right:48px}
+.marq .row span:after{content:"";width:14px;height:14px;border-radius:50%;background:var(--flare)}
+.marq .row .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+/* system network */
+.net{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.net path{fill:none;stroke:var(--cobalt);stroke-width:2;stroke-linecap:round}
+.hub{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);background:var(--cobalt);color:var(--cobalt-ink);font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(15px,1.5vw,20px);padding:12px 20px;border-radius:999px;white-space:nowrap;box-shadow:0 0 0 8px color-mix(in srgb,var(--cobalt) 22%,transparent),0 20px 40px rgba(13,24,36,.25)}
+.hub:before{content:"";position:absolute;inset:-8px;border-radius:inherit;border:2px solid var(--cobalt);animation:ping 2.2s ease-out infinite;opacity:0}
+@keyframes ping{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+/* offers backdrop word */
+.offers .pin{position:relative}
+.bigword{position:absolute;left:0;bottom:4%;font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:clamp(120px,22vw,340px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--paper) 14%,transparent);white-space:nowrap;pointer-events:none;z-index:0}
+.offers .wrap{position:relative;z-index:1}
+.offers .count{font-family:var(--f-mono);font-size:14px;color:color-mix(in srgb,var(--paper) 70%,transparent);letter-spacing:.1em}
+/* chaos -> system */
+.scene{position:relative}
+.scene .pin{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-block:28px}
+.scene-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:28px}
+.scene-head .titles{display:grid;font-size:clamp(30px,5vw,72px)}
+.scene-head h2{font-size:1em;grid-area:1/1}
+.scene-head .t2{color:var(--cobalt);opacity:0}
+.meter{text-align:right;min-width:170px}
+.meter .val{font-family:var(--f-display);font-weight:850;font-stretch:110%;font-size:clamp(36px,4vw,56px);line-height:1;font-variant-numeric:tabular-nums;color:var(--flare)}
+.meter .lab{color:var(--ink-2)}
+.stage{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cell{position:relative;z-index:2;aspect-ratio:1.25/1;max-width:100%;border-radius:18px;will-change:transform}
+.face{position:absolute;inset:0;border-radius:inherit;padding:18px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.mess{box-shadow:0 18px 40px rgba(13,24,36,.18)}
+.neat{background:var(--card);border:1px solid var(--line);opacity:0}
+.neat .k{color:var(--ink-2)}
+.neat .v{font-family:var(--f-display);font-weight:800;font-stretch:108%;font-size:clamp(20px,2vw,28px);line-height:1.05}
+.neat .s{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2)}
+.neat .s i{width:8px;height:8px;border-radius:50%;background:#2DBE6C;display:inline-block}
+/* the eight messes, each its own material */
+.m-wa{background:#ECE5DD;color:#1d1d1d;justify-content:flex-start;gap:8px}
+.m-wa .hd{display:flex;justify-content:space-between;font-weight:600;font-size:14px}
+.m-wa .hd b{background:#25D366;color:#fff;border-radius:999px;padding:1px 9px;font-size:13px}
+.m-wa .bb{background:#fff;border-radius:10px 10px 10px 2px;padding:6px 10px;font-size:14px;align-self:flex-start;max-width:92%}
+.m-note{background:var(--note);color:#3a2f05;font-family:"Comic Sans MS","Marker Felt","Segoe Print",cursive;font-size:clamp(17px,1.7vw,22px);line-height:1.2}
+.m-xls{background:#fff;color:#1d1d1d;padding:0;font-family:var(--f-mono);font-size:12px}
+.m-xls .bar{background:#1E7145;color:#fff;padding:8px 12px;font-size:12px}
+.m-xls table{border-collapse:collapse;width:100%}
+.m-xls td{border:1px solid #d9d9d9;padding:4px 6px;white-space:nowrap}
+.m-xls .red{color:#c62828;font-weight:600}
+.m-cal{background:#fff;color:#1d1d1d;justify-content:flex-start;gap:8px}
+.m-cal .slot{border-left:4px solid #4285F4;background:#E8F0FE;border-radius:6px;padding:6px 8px;font-size:14px}
+.m-cal .slot.b{border-color:#EA4335;background:#FDECEA}
+.m-rcpt{background:#FFFDF7;color:#333;font-family:var(--f-mono);font-size:13px;justify-content:flex-start;gap:4px}
+.m-rcpt .q{margin-top:auto;font-family:"Comic Sans MS","Marker Felt",cursive;color:#c62828;font-size:16px;transform:rotate(-4deg)}
+.m-site{background:#23272e;color:#cfd6df;justify-content:center;align-items:center;text-align:center;gap:6px}
+.m-site .u{font-family:var(--f-mono);font-size:12px;opacity:.6}
+.m-site .cs{font-family:var(--f-display);font-weight:800;font-size:clamp(20px,2vw,28px);color:#fff}
+.m-book{background:#F3EDE1;color:#2b2b2b;background-image:repeating-linear-gradient(#F3EDE1 0 27px,#c9d6e6 27px 28px);font-family:"Comic Sans MS","Marker Felt",cursive;font-size:16px;line-height:28px;padding-top:6px}
+.m-book s{color:#9a9a9a}
+.m-clock{background:#14181f;color:#fff;justify-content:center;gap:4px}
+.m-clock .tm{font-family:var(--f-mono);font-size:clamp(30px,3.4vw,46px);font-weight:600;color:#ff6b6b;line-height:1}
+.m-clock .tx{font-size:14px;opacity:.75}
+.scene-foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;color:var(--ink-2)}
+
+/* offers: horizontal track */
+.offers{background:var(--ink);color:var(--paper)}
+.offers .pin{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-block:56px;overflow:hidden}
+.offers .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.offers .head p{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.track{display:flex;gap:24px;will-change:transform}
+.panel{flex:0 0 min(78vw,760px);min-width:0;background:color-mix(in srgb,var(--paper) 7%,transparent);border:1px solid color-mix(in srgb,var(--paper) 16%,transparent);border-radius:28px;padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.panel .tag{color:var(--flare)}
+.panel h3{margin:14px 0 16px}
+.panel p{color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.panel ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.panel li{display:flex;gap:12px;align-items:baseline}
+.panel li:before{content:"";width:14px;height:2px;background:var(--cobalt);flex:none;transform:translateY(-5px)}
+.viz{aspect-ratio:1/1;max-width:100%;border-radius:20px;background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
+/* viz 1: browser */
+.vz-br .bar{height:30px;background:var(--paper-2);display:flex;gap:6px;align-items:center;padding:0 12px}
+.vz-br .bar i{width:9px;height:9px;border-radius:50%;background:var(--ink-2);opacity:.4}
+.vz-br .bd{padding:18px;display:grid;gap:10px}
+.vz-br .h{height:14px;width:70%;background:var(--ink);border-radius:4px}
+.vz-br .l{height:8px;background:var(--line);border-radius:4px}
+.vz-br .b{height:34px;width:46%;background:var(--cobalt);border-radius:999px;margin-top:6px}
+.vz-br .img{height:42%;background:linear-gradient(135deg,var(--cobalt),var(--flare));border-radius:12px;opacity:.85}
+/* viz 2: app */
+.vz-app{display:grid;grid-template-columns:28% 1fr}
+.vz-app .side{background:var(--ink);opacity:.9}
+.vz-app .main{padding:16px;display:grid;gap:10px;align-content:start}
+.vz-app .kpi{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vz-app .kpi div{height:54px;border-radius:10px;background:var(--paper-2)}
+.vz-app .row{height:22px;border-radius:6px;background:var(--paper-2)}
+.vz-app .row.c{background:color-mix(in srgb,var(--cobalt) 30%,var(--paper-2))}
+/* viz 3: flow */
+.vz-flow{display:grid;place-items:center}
+.vz-flow svg{width:86%;height:86%}
+.vz-flow .nd{fill:var(--card);stroke:var(--ink);stroke-width:2}
+.vz-flow .ln{stroke:var(--cobalt);stroke-width:3;fill:none;stroke-dasharray:6 6;animation:flow 1.2s linear infinite}
+.vz-flow text{font-family:var(--f-mono);font-size:11px;fill:var(--ink)}
+@keyframes flow{to{stroke-dashoffset:-24}}
+
+/* process */
+.process{padding-block:clamp(72px,10vw,140px)}
+.process .intro{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end;margin-bottom:56px}
+.process .intro p{color:var(--ink-2)}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-top:44px}
+.rail{position:absolute;left:0;right:0;top:12px;height:3px;background:var(--line)}
+.rail b{position:absolute;inset:0;background:var(--cobalt);transform-origin:0 50%;transform:scaleX(1)}
+.step{position:relative;min-width:0}
+.step:before{content:"";position:absolute;top:-40px;left:0;width:20px;height:20px;border-radius:50%;background:var(--paper);border:3px solid var(--cobalt)}
+.step .n{color:var(--cobalt)}
+.step h3{margin:10px 0 12px;font-size:clamp(26px,2.6vw,36px)}
+.step p{color:var(--ink-2);font-size:17px}
+
+/* test */
+.test{background:var(--paper-2);padding-block:clamp(72px,10vw,130px)}
+.test .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.test .grid > *{min-width:0}
+.test .lead p{color:var(--ink-2);margin-top:20px}
+.q{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.q label{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer;transition:border-color .2s ease,transform .2s ease}
+.q label:hover{transform:translateX(4px)}
+.q input{appearance:none;width:24px;height:24px;flex:none;border:2px solid var(--ink);border-radius:7px;display:grid;place-items:center;margin:0;cursor:pointer}
+.q input:checked{background:var(--cobalt);border-color:var(--cobalt)}
+.q input:checked:after{content:"";width:10px;height:6px;border-left:3px solid var(--cobalt-ink);border-bottom:3px solid var(--cobalt-ink);transform:rotate(-45deg) translate(1px,-1px)}
+.q input:checked + span{font-weight:600}
+.score{margin-top:22px;border-radius:18px;padding:22px;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.score .big{font-family:var(--f-display);font-weight:850;font-stretch:115%;font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
+.score .big small{font-size:24px;opacity:.6}
+.score p{color:color-mix(in srgb,var(--paper) 82%,transparent);font-size:17px}
+
+/* close */
+.close{padding-block:clamp(80px,12vw,160px)}
+.close h2{max-width:14ch}
+.close .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:40px}
+.contact{display:flex;align-items:center;gap:10px;border:1px dashed var(--line);border-radius:999px;padding:10px 12px 10px 18px}
+.contact .num{font-family:var(--f-mono);font-size:16px;user-select:all}
+.contact button{font:600 14px var(--f-body);border:0;border-radius:999px;padding:8px 14px;background:var(--ink);color:var(--paper);cursor:pointer}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:26px;color:var(--ink-2);font-size:15px}
+
+@media (max-width:820px){
+  body{font-size:17px}
+  .stage{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cell{aspect-ratio:1.35/1}
+  .face{padding:14px}
+  .neat .v{font-size:17px}
+  .neat .s{font-size:12px}
+  .scene-head{grid-template-columns:1fr}
+  .meter{text-align:left}
+  .track{flex-direction:column}
+  .panel{grid-template-columns:1fr;flex:none}
+  .viz{aspect-ratio:16/10}
+  .process .intro,.test .grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;padding-top:0;padding-left:40px}
+  .rail{top:0;bottom:0;left:9px;right:auto;width:3px;height:auto}
+  .rail b{transform-origin:50% 0}
+  .step:before{top:6px;left:-40px}
+  .m-xls{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+
+<div class="prog" id="prog"></div>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Jay Steenkamp<span>.</span></a>
+  <a class="btn solid" href="#talk">Book a free audit</a>
+</div></header>
+
+<main id="top">
+<section class="hero" id="hero"><canvas id="field" aria-hidden="true"></canvas><div class="wrap">
+  <div class="eyebrow mono"><i></i>Websites · Apps · Automation &nbsp;/&nbsp; for small businesses, anywhere</div>
+  <h1 id="headline"><span class="wline"><span>Your</span></span> <span class="wline"><span>business,</span></span><br><span class="wline run"><span>running</span></span> <span class="wline run"><span>itself.</span></span></h1>
+  <p class="lede">I build the website, the app and the automations that take the repetitive work off your plate, so you can get back to the work you actually started the business for.</p>
+  <div class="ctas"><a class="btn solid" href="#talk">Book a free 30-minute audit</a><a class="btn" href="#test">Take the 30-second test</a></div>
+  <div class="scrollcue mono"><b></b>Scroll to see what changes</div>
+</div></section>
+
+<div class="marq" aria-hidden="true"><div class="row" id="mq1"><span>Fewer tabs</span><span class="o">Fewer late nights</span><span>More bookings</span><span class="o">Zero double bookings</span><span>Invoices that chase themselves</span><span class="o">Weekends back</span><span>Fewer tabs</span><span class="o">Fewer late nights</span><span>More bookings</span><span class="o">Zero double bookings</span><span>Invoices that chase themselves</span><span class="o">Weekends back</span></div></div>
+<!-- chaos -> system -->
+<section class="scene" id="scene"><div class="pin"><div class="wrap">
+  <div class="scene-head">
+    <div class="titles"><h2 class="t1">This is how most small businesses run.</h2><h2 class="t2">Same business. One system.</h2></div>
+    <div class="meter"><div class="val" id="hrs">14 h</div><div class="lab mono" id="hrsLab">lost to admin a week</div></div>
+  </div>
+  <div class="stage" id="stage"><svg class="net" id="net" aria-hidden="true"></svg><div class="hub" id="hub">Your business</div>
+    <div class="cell" data-c="0.06,0.10,-9"><div class="face mess m-wa"><div class="hd">WhatsApp <b>23</b></div><div class="bb">Hi! What are your prices? 😊</div><div class="bb">Are you open Saturday??</div><div class="bb">hello?</div></div>
+      <div class="face neat"><span class="k mono">Customer replies</span><span class="v">Answered instantly</span><span class="s"><i></i>0 waiting</span></div></div>
+    <div class="cell" data-c="0.30,0.52,7"><div class="face mess m-note">call back Sarah re: quote!!<br>(she asked Tuesday…)</div>
+      <div class="face neat"><span class="k mono">Quotes</span><span class="v">Sent the same day</span><span class="s"><i></i>Follow-ups on autopilot</span></div></div>
+    <div class="cell" data-c="0.55,0.04,-4"><div class="face mess m-xls"><div class="bar">invoices_FINAL_v3 (2).xlsx</div><table><tr><td>Client</td><td>Due</td><td>Paid?</td></tr><tr><td>Smith</td><td>03/09</td><td class="red">??</td></tr><tr><td>Naidoo</td><td>11/09</td><td>yes</td></tr><tr><td>Hendricks</td><td>#REF!</td><td class="red">chase</td></tr></table></div>
+      <div class="face neat"><span class="k mono">Invoices</span><span class="v">Sent and chased for you</span><span class="s"><i></i>0 overdue</span></div></div>
+    <div class="cell" data-c="0.80,0.46,10"><div class="face mess m-cal"><div class="slot">10:00 · Cut &amp; colour, Lee</div><div class="slot b">10:00 · Ms Jacobs?? double booked</div><div class="slot">13:30 · ?</div></div>
+      <div class="face neat"><span class="k mono">Bookings</span><span class="v">Online, 24/7</span><span class="s"><i></i>No double bookings</span></div></div>
+    <div class="cell" data-c="0.04,0.70,5"><div class="face mess m-rcpt">RECEIPT #0042<br>2× service ...... ???<br>card / cash / EFT<div class="q">who paid this?</div></div>
+      <div class="face neat"><span class="k mono">Payments</span><span class="v">Matched automatically</span><span class="s"><i></i>Books up to date</span></div></div>
+    <div class="cell" data-c="0.38,0.08,-6"><div class="face mess m-site"><span class="u">yourbusiness.co</span><span class="cs">Coming soon</span><span class="u">since 2019</span></div>
+      <div class="face neat"><span class="k mono">Website</span><span class="v">Live and bringing in leads</span><span class="s"><i></i>Passes the 5-second test</span></div></div>
+    <div class="cell" data-c="0.62,0.68,-11"><div class="face mess m-book">stock — ask Pieter<br><s>order more boxes</s><br>which supplier??</div>
+      <div class="face neat"><span class="k mono">Stock</span><span class="v">Reorders itself</span><span class="s"><i></i>Low-stock alerts on</span></div></div>
+    <div class="cell" data-c="0.86,0.12,6"><div class="face mess m-clock"><span class="tm">23:47</span><span class="tx">still doing admin</span></div>
+      <div class="face neat"><span class="k mono">Your evenings</span><span class="v">Back</span><span class="s"><i></i>Admin done by 17:00</span></div></div>
+  </div>
+  <div class="scene-foot mono"><span>Example system · every business is different</span><span id="sceneHint">Keep scrolling</span></div>
+</div></div></section>
+
+<!-- offers -->
+<section class="offers" id="offers"><div class="pin"><div class="wrap">
+  <div class="bigword" aria-hidden="true" id="bigword">websites · apps · automation ·</div><div class="head"><h2>Three ways I help.</h2><p>Start with one. Most businesses end up with all three working together.</p></div>
+  <div class="track" id="track">
+    <article class="panel"><div><span class="tag mono">Websites</span><h3>Live in about a week. Built to get you booked.</h3><p>A fast, good-looking site that answers the three questions every visitor has in five seconds: what you do, where you are, and how to book.</p>
+      <ul><li>Booking or WhatsApp button front and centre</li><li>Your real reviews and real photos</li><li>Found on Google, works on every phone</li></ul></div>
+      <div class="viz vz-br" aria-hidden="true"><div class="bar"><i></i><i></i><i></i></div><div class="bd"><div class="img"></div><div class="h"></div><div class="l"></div><div class="l" style="width:80%"></div><div class="b"></div></div></div></article>
+    <article class="panel"><div><span class="tag mono">Custom apps</span><h3>Software shaped around how you actually work.</h3><p>When off-the-shelf tools force you to bend your process, I build the one that fits: a client portal, a job tracker, a booking system, a dashboard that shows your numbers today.</p>
+      <ul><li>Clickable prototype before any code</li><li>One place instead of six tools</li><li>No paying per seat for features nobody uses</li></ul></div>
+      <div class="viz vz-app" aria-hidden="true"><div class="side"></div><div class="main"><div class="kpi"><div></div><div></div></div><div class="row c"></div><div class="row"></div><div class="row"></div><div class="row c"></div><div class="row"></div></div></div></article>
+    <article class="panel"><div><span class="tag mono">Automation</span><h3>The repetitive stuff, handled while you sleep.</h3><p>If you do it the same way three times a week, a system should do it. Quotes, follow-ups, invoices, reminders and reports, connected and running quietly in the background.</p>
+      <ul><li>Instant replies to common questions</li><li>Payment and appointment reminders</li><li>Reports in your inbox every Monday</li></ul></div>
+      <div class="viz vz-flow" aria-hidden="true"><svg viewBox="0 0 220 220"><path class="ln" d="M55 50 H165"/><path class="ln" d="M165 50 V110 H55 V170 H165"/><rect class="nd" x="20" y="34" width="70" height="32" rx="8"/><rect class="nd" x="130" y="34" width="70" height="32" rx="8"/><rect class="nd" x="20" y="94" width="70" height="32" rx="8"/><rect class="nd" x="130" y="154" width="70" height="32" rx="8"/><text x="32" y="55">New lead</text><text x="142" y="55">Reply</text><text x="34" y="115">Quote</text><text x="140" y="175">Invoice</text></svg></div></article>
+  </div>
+</div></div></section>
+
+<!-- process -->
+<section class="process" id="process"><div class="wrap">
+  <div class="intro"><h2>How we get there.</h2><p>Four steps, in this order, every time. You see progress at each one and nothing gets built that you haven't clicked through first.</p></div>
+  <div class="steps" id="steps"><div class="rail"><b id="railFill"></b></div>
+    <div class="step"><span class="n mono">Step 1</span><h3>Discover</h3><p>A free 30-minute call to find where your time and money are leaking.</p></div>
+    <div class="step"><span class="n mono">Step 2</span><h3>Design</h3><p>A clickable prototype, so you can feel it before a line of code is written.</p></div>
+    <div class="step"><span class="n mono">Step 3</span><h3>Build</h3><p>Weekly updates you can see and click. No disappearing for three months.</p></div>
+    <div class="step"><span class="n mono">Step 4</span><h3>Launch</h3><p>Training for you and your team, plus support and tweaks after go-live.</p></div>
+  </div>
+</div></section>
+
+<div class="marq" aria-hidden="true"><div class="row" id="mq2"><span class="o">Discover</span><span>Design</span><span class="o">Build</span><span>Launch</span><span class="o">Support</span><span>Discover</span><span class="o">Design</span><span>Build</span><span class="o">Launch</span><span>Support</span></div></div>
+<!-- test -->
+<section class="test" id="test"><div class="wrap"><div class="grid">
+  <div class="lead"><span class="mono" style="color:var(--flare)">The 30-second test</span><h2 style="margin-top:16px">Where is your time leaking?</h2><p>Tick everything that sounds like your week. Your score updates as you go.</p>
+    <div class="score" aria-live="polite"><div class="big"><span id="sc">0</span><small>/6</small></div><p id="verdict">Start ticking. Be honest, nobody's watching.</p></div></div>
+  <ul class="q" id="quiz">
+    <li><label for="q1"><input type="checkbox" id="q1"><span>I type the same info into more than one place</span></label></li>
+    <li><label for="q2"><input type="checkbox" id="q2"><span>I answer the same questions every day</span></label></li>
+    <li><label for="q3"><input type="checkbox" id="q3"><span>I chase people for payments or replies</span></label></li>
+    <li><label for="q4"><input type="checkbox" id="q4"><span>Bookings or orders live in my head or on paper</span></label></li>
+    <li><label for="q5"><input type="checkbox" id="q5"><span>I build the same report or spreadsheet every week</span></label></li>
+    <li><label for="q6"><input type="checkbox" id="q6"><span>Things fall apart when I take a day off</span></label></li>
+  </ul>
+</div></div></section>
+
+<!-- close -->
+<section class="close" id="talk"><div class="wrap">
+  <span class="mono" style="color:var(--ink-2)">Free · 30 minutes · no obligation</span>
+  <h2 style="margin-top:18px" class="lit" id="litH">Let's find the hours you're losing.</h2>
+  <p style="margin-top:22px;color:var(--ink-2);font-size:20px">Tell me how your business runs today. I'll show you what to fix first, whether you work with me or not.</p>
+  <div class="row">
+    <a class="btn solid" href="https://wa.me/27615826878?text=Hi%20Jay%2C%20I%27d%20like%20to%20book%20a%20free%20audit" target="_blank" rel="noopener">Message me on WhatsApp</a>
+    <div class="contact"><span class="num" id="num">+27 61 582 6878</span><button type="button" id="copy">Copy</button></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Jay Steenkamp · Knysna, South Africa</span><span>Working with small businesses worldwide</span></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  /* ---------- quiz ---------- */
+  const boxes=[...document.querySelectorAll('#quiz input')], sc=document.getElementById('sc'), vd=document.getElementById('verdict');
+  const V=["Start ticking. Be honest, nobody's watching.","You're in good shape. Keep it simple.","You're in good shape. Keep it simple.","Pick your biggest time leak and fix that one first.","Pick your biggest time leak and fix that one first.","You're doing a system's job. Automation would give you hours back every week.","You're doing a system's job. Automation would give you hours back every week."];
+  boxes.forEach(b=>b.addEventListener('change',()=>{const n=boxes.filter(x=>x.checked).length;sc.textContent=n;vd.textContent=V[n];
+    if(window.gsap){gsap.fromTo(sc,{scale:1.35},{scale:1,duration:.5,ease:'back.out(3)'})}}));
+  /* ---------- copy number ---------- */
+  const copy=document.getElementById('copy'), num=document.getElementById('num');
+  copy.addEventListener('click',()=>{
+    const flash=t=>{copy.textContent=t;setTimeout(()=>copy.textContent='Copy',1600)};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(num);const s=getSelection();s.removeAllRanges();s.addRange(r);flash('Selected')};
+    try{navigator.clipboard.writeText(num.textContent).then(()=>flash('Copied'),sel)}catch(e){sel()}});
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- hero particle field: chaos -> grid ---------- */
+  const cv=document.getElementById('field'), ctx=cv.getContext('2d'), hero=document.getElementById('hero');
+  let W=0,H=0,pts=[],order=reduce?1:0,targetOrder=reduce?1:0,col={},mouse={x:-9999,y:-9999},running=true,t=0,gap=42;
+  function readCols(){const cs=getComputedStyle(document.documentElement);col.ink=cs.getPropertyValue('--ink').trim();col.cob=cs.getPropertyValue('--cobalt').trim();col.fl=cs.getPropertyValue('--flare').trim();}
+  function build(){
+    const r=hero.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    gap=W<700?30:40;const cols=Math.floor(W/gap)+1,rows=Math.floor(H/gap)+1,ox=(W-(cols-1)*gap)/2,oy=(H-(rows-1)*gap)/2;
+    pts=[];for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const k=Math.random();
+      pts.push({gx:ox+x*gap,gy:oy+y*gap,cx:Math.random()*W,cy:Math.random()*H,ph:Math.random()*6.283,sp:.25+Math.random()*.6,amp:18+Math.random()*46,
+        k:k<.04?'fl':k<.09?'cob':'ink',dx:0,dy:0,c:x,r:y,cols});}
+    readCols();
+  }
+  const ease=v=>v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2;
+  function draw(){
+    t+=.016; order+=(targetOrder-order)*.07; const o=ease(Math.max(0,Math.min(1,order)));
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      const chx=p.cx+Math.sin(t*p.sp+p.ph)*p.amp, chy=p.cy+Math.cos(t*p.sp*.8+p.ph)*p.amp;
+      let x=chx+(p.gx-chx)*o, y=chy+(p.gy-chy)*o;
+      const mx=x-mouse.x, my=y-mouse.y, d=Math.hypot(mx,my);
+      const tx=d<140?mx/d*(140-d)*.45:0, ty=d<140?my/d*(140-d)*.45:0;
+      p.dx+=(tx-p.dx)*.12;p.dy+=(ty-p.dy)*.12; p.x=x+p.dx; p.y=y+p.dy;
+    }
+    if(o>.35){ // the "system" lattice
+      ctx.globalAlpha=Math.min(1,(o-.35)/.65)*.28; ctx.strokeStyle=col.cob; ctx.lineWidth=1; ctx.beginPath();
+      for(let i=0;i<pts.length;i++){const p=pts[i];
+        if(p.c<p.cols-1){const q=pts[i+1];ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y)}
+        const q2=pts[i+p.cols]; if(q2){ctx.moveTo(p.x,p.y);ctx.lineTo(q2.x,q2.y)}}
+      ctx.stroke();
+    }
+    for(const p of pts){
+      ctx.globalAlpha=p.k==='ink'?.55:.95; ctx.fillStyle=p.k==='ink'?col.ink:p.k==='fl'?col.fl:col.cob;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.k==='ink'?1.6:2.8,0,6.283);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+  }
+  function loop(){ if(running){draw()} requestAnimationFrame(loop) }
+  build(); draw(); if(!reduce){ requestAnimationFrame(loop);
+    new IntersectionObserver(e=>{running=e[0].isIntersecting}).observe(hero);
+    hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+    hero.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-9999});
+  }
+  let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{build();draw()},150)});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',readCols);
+  new MutationObserver(readCols).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  /* ---------- no animation libs or reduced motion: show the finished state ---------- */
+  if(!window.gsap||!window.ScrollTrigger||reduce){
+    document.querySelectorAll('.neat').forEach(n=>n.style.opacity=1);
+    document.querySelector('.t1').style.opacity=0;document.querySelector('.t2').style.opacity=1;
+    document.getElementById('hrs').textContent='2 h';document.getElementById('hrsLab').textContent='on admin a week';
+    document.getElementById('hub').style.transform='translate(-50%,-50%) scale(1)';
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---------- smooth scroll ---------- */
+  let lenis=null;
+  if(window.Lenis){
+    lenis=new Lenis({lerp:.09,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(time=>lenis.raf(time*1000)); gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const el=document.querySelector(a.getAttribute('href')); if(!el)return; e.preventDefault();
+    lenis?lenis.scrollTo(el,{offset:-72,duration:1.4}):el.scrollIntoView({behavior:'smooth'});}));
+
+  /* ---------- progress ---------- */
+  gsap.to('#prog',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+  /* ---------- headline reveal + field order ---------- */
+  gsap.from('#headline .wline > span',{yPercent:115,rotate:4,duration:1.1,ease:'power4.out',stagger:.09,delay:.15});
+  gsap.from('.hero .lede, .hero .ctas, .hero .eyebrow, .hero .scrollcue',{y:24,opacity:0,duration:.9,ease:'power3.out',stagger:.08,delay:.55});
+  ScrollTrigger.create({trigger:'#hero',start:'top top',end:'bottom top',onUpdate:s=>{targetOrder=Math.min(1,s.progress*1.8)}});
+  gsap.to('#headline',{yPercent:-18,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* ---------- marquees, faster with scroll speed ---------- */
+  const mqs=['#mq1','#mq2'].map((id,i)=>gsap.to(id,{xPercent:-50,repeat:-1,duration:i?26:34,ease:'none'}));
+  gsap.set('#mq2',{xPercent:-50}); mqs[1].vars; // second runs the other way
+  mqs[1].kill(); mqs[1]=gsap.fromTo('#mq2',{xPercent:-50},{xPercent:0,repeat:-1,duration:26,ease:'none'});
+  ScrollTrigger.create({start:0,end:'max',onUpdate:s=>{const v=Math.min(Math.abs(s.getVelocity())/350,7);
+    mqs.forEach(m=>{gsap.to(m,{timeScale:1+v,duration:.2,overwrite:true});gsap.to(m,{timeScale:1,duration:1.2,delay:.2})})}});
+
+  /* ---------- chaos -> system ---------- */
+  const stage=document.getElementById('stage'), cells=[...stage.querySelectorAll('.cell')], net=document.getElementById('net'), hub=document.getElementById('hub');
+  function wire(){
+    const w=stage.clientWidth,h=stage.clientHeight,hx=w/2,hy=h/2; net.setAttribute('viewBox',`0 0 ${w} ${h}`);
+    net.innerHTML=cells.map(c=>{const x=c.offsetLeft+c.offsetWidth/2,y=c.offsetTop+c.offsetHeight/2;
+      return `<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="M${x},${y} C${x},${(y+hy)/2} ${hx},${(y+hy)/2} ${hx},${hy}"/>`}).join('');
+  }
+  wire(); ScrollTrigger.addEventListener('refreshInit',wire);
+  function chaos(c){const [cx,cy,rot]=c.dataset.c.split(',').map(Number);
+    const x=cx*(stage.clientWidth-c.offsetWidth)-c.offsetLeft, y=cy*(stage.clientHeight-c.offsetHeight)-c.offsetTop;
+    return {x,y,rotation:rot*(innerWidth<=820?1.4:1)}}
+  const hrs={v:14}, hrsEl=document.getElementById('hrs'), lab=document.getElementById('hrsLab');
+  const tl=gsap.timeline({scrollTrigger:{trigger:'#scene',start:'top top',end:'+=220%',pin:'#scene .pin',scrub:.7,invalidateOnRefresh:true,
+    onUpdate:s=>{document.getElementById('sceneHint').textContent=s.progress>.92?'Connected':'Keep scrolling'}}});
+  cells.forEach((c,i)=>{
+    tl.fromTo(c,{x:()=>chaos(c).x,y:()=>chaos(c).y,rotation:()=>chaos(c).rotation,scale:1.05},{x:0,y:0,rotation:0,scale:1,ease:'power3.inOut',duration:1},.2+i*.05);
+    tl.to(c.querySelector('.neat'),{opacity:1,duration:.3,ease:'none'},.75+i*.05);
+  });
+  tl.to('.t1',{opacity:0,y:-24,duration:.3},.7).fromTo('.t2',{opacity:0,y:24},{opacity:1,y:0,duration:.3},.85);
+  tl.to(hrs,{v:2,duration:1,ease:'power2.inOut',onUpdate:()=>{hrsEl.textContent=Math.round(hrs.v)+' h'}},.5);
+  tl.to(hub,{scale:1,duration:.3,ease:'back.out(2.2)'},1.25);
+  tl.to('#net path',{strokeDashoffset:0,duration:.45,stagger:.04,ease:'power2.out'},1.3);
+  tl.to({},{duration:.3});
+  tl.eventCallback('onUpdate',()=>{const on=tl.progress()>.45;lab.textContent=on?'on admin a week':'lost to admin a week';hrsEl.style.color=on?'var(--cobalt)':'var(--flare)'});
+  cells.forEach((c,i)=>gsap.to(c.querySelector('.mess'),{rotation:(i%2?1:-1)*1.6,y:(i%3-1)*5,duration:1.5+i*.13,yoyo:true,repeat:-1,ease:'sine.inOut'}));
+
+  /* ---------- offers ---------- */
+  const mm=gsap.matchMedia();
+  mm.add('(min-width: 821px)',()=>{
+    const track=document.getElementById('track'), dist=()=>track.scrollWidth-track.parentElement.clientWidth;
+    const h=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#offers',start:'top top',end:()=>'+='+dist()*1.2,pin:'#offers .pin',scrub:.6,invalidateOnRefresh:true}});
+    gsap.utils.toArray('.panel').forEach((pnl,i)=>{ if(!i) return;
+      gsap.from(pnl.querySelector('.viz'),{rotate:-8,scale:.78,ease:'none',scrollTrigger:{trigger:pnl,containerAnimation:h,start:'left right',end:'center center',scrub:true}});
+      gsap.from(pnl.querySelector('h3'),{x:80,ease:'none',scrollTrigger:{trigger:pnl,containerAnimation:h,start:'left right',end:'left 30%',scrub:true}});
+    });
+  });
+  mm.add('(max-width: 820px)',()=>{
+    gsap.utils.toArray('.panel').forEach(pnl=>gsap.from(pnl.querySelector('.viz'),{scale:.85,rotate:-4,ease:'none',scrollTrigger:{trigger:pnl,start:'top 90%',end:'top 40%',scrub:true}}));
+  });
+  gsap.to('#bigword',{xPercent:-35,ease:'none',scrollTrigger:{trigger:'#offers',start:'top bottom',end:'bottom top',scrub:true}});
+
+  /* ---------- process rail ---------- */
+  const vert=()=>innerWidth<=820;
+  gsap.fromTo('#railFill',{scaleX:()=>vert()?1:0,scaleY:()=>vert()?0:1},{scaleX:1,scaleY:1,ease:'none',
+    scrollTrigger:{trigger:'#steps',start:'top 75%',end:'bottom 55%',scrub:.4,invalidateOnRefresh:true}});
+  gsap.utils.toArray('.step').forEach(s=>gsap.from(s,{y:40,opacity:.2,duration:.7,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 88%',toggleActions:'play none none reverse'}}));
+
+  /* ---------- closing line lights up ---------- */
+  const lit=document.getElementById('litH');
+  lit.innerHTML=lit.textContent.split(' ').map(w=>`<span class="w">${w}</span>`).join(' ');
+  gsap.fromTo('#litH .w',{opacity:.15},{opacity:1,stagger:.12,ease:'none',scrollTrigger:{trigger:'#talk',start:'top 85%',end:'top 35%',scrub:true}});
+
+  /* ---------- magnetic buttons ---------- */
+  if(matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.btn').forEach(b=>{
+      b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.4,duration:.35,ease:'power3.out'})});
+      b.addEventListener('pointerleave',()=>gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.45)'}));
+    });
+  }
+  addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
