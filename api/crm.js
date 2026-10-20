@@ -107,7 +107,11 @@ module.exports = async (req, res) => {
     }
     if (a === 'create' && req.method === 'POST') {
       const list = Array.isArray(body.leads) ? body.leads : [body.lead || body];
-      const rows = list.map(clean).filter(r => r.business);
+      let rows = list.map(clean).filter(r => r.business);
+      // The database needs every row in a batch to have the same fields, so fill the gaps with defaults.
+      const keys = [...new Set(rows.flatMap(r => Object.keys(r)))];
+      const DEF = { status: 'Drafted', channel: 'Email', follow_ups: 0, log: [] };
+      rows = rows.map(r => Object.fromEntries(keys.map(k => [k, k in r && r[k] !== null ? r[k] : (k in DEF ? DEF[k] : null)])));
       if (!rows.length) return res.status(400).json({ error: 'Business name is required' });
       if (rows.length > 1000) return res.status(400).json({ error: 'Import up to 1000 at a time' });
       const out = await sb('leads', { method: 'POST', body: JSON.stringify(rows) });
