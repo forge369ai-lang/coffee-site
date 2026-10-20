@@ -360,13 +360,18 @@ function openLead(l){
 function closeDrawer(){$("#drawer").classList.remove("open");$("#drawer").setAttribute("aria-hidden","true");document.body.style.overflow="";current=null}
 $("#drawer").addEventListener("click",e=>{if(e.target.closest("[data-close]"))closeDrawer()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&current)closeDrawer()});
+const desktop=()=>!matchMedia("(pointer:coarse)").matches;
+function waLink(u){ // on a computer, open WhatsApp Web directly so the typed message isn't lost in the redirect
+  const m=String(u).match(/^https:\/\/wa\.me\/(\d+)(?:\?text=(.*))?$/);if(!m||!desktop())return u;
+  return `https://web.whatsapp.com/send?phone=${m[1]}${m[2]?"&text="+m[2]:""}`;
+}
 function renderQuick(){
   if(!current.id){$("#quick").innerHTML="";return}
   const w=waNum(current.phone), first=(current.contact||"").split(/[ &,]/)[0];
   const waText=encodeURIComponent(`Hi ${first||"there"}, Jay here. `);
   $("#quick").innerHTML=[
     current.email?`<a class="btn" href="mailto:${esc(current.email)}?subject=${encodeURIComponent("Re: "+(current.subject||current.business))}">✉ Email</a>`:"",
-    w?`<a class="btn" href="${/^https:\/\/wa\.me\/\d+\?text=/.test(current.link||"")?esc(current.link):`https://wa.me/${w}?text=${waText}`}" target="_blank" rel="noopener">WhatsApp${/^https:\/\/wa\.me\//.test(current.link||"")?" (message ready)":""}</a>`:"",
+    w?`<a class="btn" href="${esc(waLink(/^https:\/\/wa\.me\/\d+\?text=/.test(current.link||"")?current.link:`https://wa.me/${w}?text=${waText}`))}" target="_blank" rel="noopener">WhatsApp${/^https:\/\/wa\.me\//.test(current.link||"")?" (message ready)":""}</a>`:"",
     current.phone?`<a class="btn" href="tel:${esc(current.phone.replace(/\s/g,""))}">Call</a>`:"",
     `<button class="btn" type="button" data-q="follow">+ Log follow-up</button>`,
     `<button class="btn" type="button" data-q="replied">Mark replied</button>`,
