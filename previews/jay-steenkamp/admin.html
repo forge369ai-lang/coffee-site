@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>CRM | Jay Steenkamp Studio</title>
+<link rel="icon" href="/previews/jay-steenkamp/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F6F5F2; --panel:#FFFFFF; --ink:#111111; --ink-2:#5C5C5C; --ink-3:#8A8A8A;
+  --accent:#F0561D; --accent-ink:#fff; --line:rgba(17,17,17,.10); --hover:rgba(17,17,17,.035);
+  --good:#1F8A4C; --warn:#C27C0E; --bad:#C8352B; --info:#2F5FD0;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0C0C0D; --panel:#161618; --ink:#F2F1EE; --ink-2:#A3A3A3; --ink-3:#7A7A7A;
+  --accent:#FF7A42; --accent-ink:#0C0C0D; --line:rgba(242,241,238,.11); --hover:rgba(242,241,238,.04);
+  --good:#4CC27E; --warn:#E3A93A; --bad:#F06A5F; --info:#7C9DF2; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0C0C0D; --panel:#161618; --ink:#F2F1EE; --ink-2:#A3A3A3; --ink-3:#7A7A7A;
+  --accent:#FF7A42; --accent-ink:#0C0C0D; --line:rgba(242,241,238,.11); --hover:rgba(242,241,238,.04);
+  --good:#4CC27E; --warn:#E3A93A; --bad:#F06A5F; --info:#7C9DF2; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;overflow-x:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+
+/* login */
+.login{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:24px var(--gut)}
+.login form{width:min(400px,100%);background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:32px}
+.login h1{font-family:var(--f-display);font-weight:850;font-stretch:118%;font-size:40px;line-height:.95;margin:14px 0 6px;letter-spacing:-.02em}
+.login h1 span{color:var(--accent)}
+.login p{color:var(--ink-2);margin:0 0 22px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field > span{color:var(--ink-2);font-size:13px;font-weight:600}
+.in{width:100%;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:11px 13px;outline:0}
+.in:focus{border-color:var(--ink)}
+textarea.in{min-height:96px;resize:vertical}
+.err{color:var(--bad);font-size:14px;min-height:20px;margin:4px 0 10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--line);background:var(--panel);border-radius:999px;padding:9px 15px;font-weight:600;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s,border-color .15s,transform .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.wide{width:100%;padding:13px}
+.btn.sm{padding:6px 12px;font-size:13px}
+.btn.danger{color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+
+/* app */
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .row{display:flex;align-items:center;gap:10px;padding:12px var(--gut);max-width:1500px;margin:0 auto}
+.brand{font-family:var(--f-display);font-weight:800;font-stretch:120%;font-size:18px;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand span{color:var(--accent)}
+.brand em{font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--ink-2)}
+@media (max-width:640px){ .top .lg{display:none} .brand{font-size:16px} .brand em{display:none} }
+main{max-width:1500px;margin:0 auto;padding:20px var(--gut) 80px}
+
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+@media (max-width:1100px){ .kpis{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:560px){ .kpis{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px;text-align:left;cursor:pointer;transition:border-color .15s}
+.kpi:hover{border-color:var(--ink)}
+.kpi b{display:block;font-family:var(--f-display);font-weight:850;font-stretch:115%;font-size:34px;line-height:1;margin-top:8px;letter-spacing:-.02em}
+.kpi small{display:block;color:var(--ink-2);margin-top:4px}
+.kpi.alert b{color:var(--accent)}
+.kpi .mono{color:var(--ink-2)}
+
+.funnel{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.funnel .bar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--hover);margin-top:12px}
+.funnel .bar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+.bar2{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:20px 0 12px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 13px;font-weight:600;font-size:13px;cursor:pointer;white-space:nowrap}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab .n{opacity:.6;margin-left:4px;font-weight:500}
+.search{flex:1 1 220px;display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--panel)}
+.search input{border:0;outline:0;background:transparent;width:100%;min-width:0}
+select.in.small{width:auto;padding:7px 12px;border-radius:999px;background:var(--panel)}
+
+.list{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th[data-k=""]{cursor:default}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--hover)}
+tbody tr:last-child td{border-bottom:0}
+.biz b{display:block;font-weight:700}
+.biz small{color:var(--ink-2)}
+.who small{display:block;color:var(--ink-2);max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;white-space:nowrap;border:1px solid transparent}
+.pill i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.ch{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);font-size:13px}
+.ch svg{width:16px;height:16px}
+.due{font-weight:700}
+.due.over{color:var(--bad)}
+.due.today{color:var(--accent)}
+.dim{color:var(--ink-3)}
+.cards{display:none}
+@media (max-width:860px){
+  table{display:none}
+  .cards{display:grid}
+  .cardrow{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;background:transparent;border-left:0;border-right:0;border-top:0;width:100%}
+  .cardrow:last-child{border-bottom:0}
+  .cardrow .r2{grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap;color:var(--ink-2);font-size:13px}
+}
+.empty{padding:48px 20px;text-align:center;color:var(--ink-2)}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:60;display:none}
+.drawer.open{display:block}
+.drawer .bg{position:absolute;inset:0;background:rgba(0,0,0,.4);animation:f .2s}
+.drawer .pane{position:absolute;right:0;top:0;bottom:0;width:min(620px,100%);background:var(--paper);overflow-y:auto;animation:s .28s cubic-bezier(.2,.8,.2,1);border-left:1px solid var(--line)}
+@keyframes f{from{opacity:0}}@keyframes s{from{transform:translateX(30px);opacity:0}}
+.dh{position:sticky;top:0;z-index:2;background:var(--paper);border-bottom:1px solid var(--line);padding:14px var(--gut);display:flex;gap:10px;align-items:center}
+.dh h2{font-family:var(--f-display);font-weight:850;font-stretch:112%;font-size:24px;line-height:1;margin:0;flex:1;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.x{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:transparent;cursor:pointer;font-size:18px;flex:none}
+.db{padding:18px var(--gut) 40px}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.quick .btn{flex:0 1 auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+@media (max-width:480px){ .grid2{grid-template-columns:1fr} }
+.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+.box > .mono{display:block;color:var(--ink-2);margin-bottom:12px}
+.log{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.log li{display:grid;grid-template-columns:86px 1fr;gap:10px;font-size:14px}
+.log li span{color:var(--ink-3);font-family:var(--f-mono);font-size:11.5px;padding-top:2px}
+.addlog{display:flex;gap:8px;margin-top:12px}
+.foot{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:999px;font-weight:600;z-index:90;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);animation:f .2s}
+.setup{background:var(--panel);border:1.5px dashed var(--accent);border-radius:18px;padding:22px;max-width:640px;margin:40px auto}
+.setup h2{font-family:var(--f-display);font-weight:850;font-stretch:112%;margin:0 0 8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="login" id="login" hidden>
+  <form id="loginForm" autocomplete="on">
+    <span class="mono" style="color:var(--ink-2)">Admin · CRM</span>
+    <h1>Jay Steenkamp<span>.</span></h1>
+    <p>Sign in to see your leads.</p>
+    <label class="field"><span>Password</span><input class="in" type="password" id="pw" autocomplete="current-password" required></label>
+    <div class="err" id="loginErr" role="alert"></div>
+    <button class="btn solid wide" type="submit" id="loginBtn">Sign in</button>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <header class="top"><div class="row">
+    <a class="brand" href="/admin"><b style="font-weight:inherit;white-space:nowrap">Jay Steenkamp<span>.</span></b><em>CRM</em></a>
+    <button class="btn sm lg" id="exportBtn">Export</button>
+    <label class="btn sm lg" style="position:relative">Import CSV<input type="file" id="importFile" accept=".csv,text/csv" style="position:absolute;inset:0;opacity:0;cursor:pointer"></label>
+    <button class="btn sm solid" id="addBtn">+ Add lead</button>
+    <button class="btn sm" id="logoutBtn" title="Sign out">Sign out</button>
+  </div></header>
+  <main>
+    <div class="kpis" id="kpis"></div>
+    <div class="funnel"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="mono" style="color:var(--ink-2)">Pipeline</span><span class="dim" id="funnelNote" style="font-size:13px"></span></div><div class="bar" id="fbar"></div><div class="legend" id="flegend"></div></div>
+    <div class="bar2">
+      <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search name, town, email, notes…" aria-label="Search leads"></label>
+      <select class="in small" id="fChannel" aria-label="Channel"><option value="">All channels</option></select>
+      <select class="in small" id="fBatch" aria-label="Batch"><option value="">All batches</option></select>
+    </div>
+    <div class="tabs" id="tabs" role="toolbar" aria-label="Filter by stage"></div>
+    <div class="list" style="margin-top:12px">
+      <table><thead><tr>
+        <th data-k="business">Business</th><th data-k="contact">Contact</th><th data-k="channel">Channel</th><th data-k="status">Status</th><th data-k="last_contact">Last touch</th><th data-k="follow_ups">F/ups</th><th data-k="next_action">Next action</th>
+      </tr></thead><tbody id="rows"></tbody></table>
+      <div class="cards" id="cards"></div>
+      <div class="empty" id="empty" hidden>No leads here.</div>
+    </div>
+    <div class="setup" id="setup" hidden><h2>Almost there</h2><p id="setupMsg"></p></div>
+  </main>
+</div>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="bg" data-close></div>
+  <div class="pane" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="dh"><h2 id="dTitle">Lead</h2><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="db">
+      <div class="quick" id="quick"></div>
+      <form id="form">
+        <div class="box"><span class="mono">Business</span>
+          <label class="field"><span>Business name</span><input class="in" name="business" required></label>
+          <div class="grid2">
+            <label class="field"><span>Type</span><input class="in" name="type" placeholder="Guesthouse, salon…"></label>
+            <label class="field"><span>Town</span><input class="in" name="town"></label>
+            <label class="field"><span>Google rating</span><input class="in" name="rating" inputmode="decimal"></label>
+            <label class="field"><span>Google reviews</span><input class="in" name="reviews" inputmode="numeric"></label>
+          </div>
+          <label class="field"><span>Current website</span><input class="in" name="website" placeholder="None"></label>
+        </div>
+        <div class="box"><span class="mono">Contact</span>
+          <div class="grid2">
+            <label class="field"><span>Contact person</span><input class="in" name="contact"></label>
+            <label class="field"><span>Channel</span><select class="in" name="channel"></select></label>
+            <label class="field"><span>Email</span><input class="in" name="email" type="email"></label>
+            <label class="field"><span>Phone</span><input class="in" name="phone" type="tel"></label>
+          </div>
+          <label class="field"><span>Subject / first message</span><input class="in" name="subject"></label>
+        </div>
+        <div class="box"><span class="mono">Pipeline</span>
+          <div class="grid2">
+            <label class="field"><span>Status</span><select class="in" name="status"></select></label>
+            <label class="field"><span>Deal value (R)</span><input class="in" name="deal_value" inputmode="decimal"></label>
+            <label class="field"><span>First contact</span><input class="in" type="date" name="first_contact"></label>
+            <label class="field"><span>Last contact</span><input class="in" type="date" name="last_contact"></label>
+            <label class="field"><span>Next action</span><input class="in" type="date" name="next_action"></label>
+            <label class="field"><span>Follow-ups sent</span><input class="in" name="follow_ups" inputmode="numeric"></label>
+            <label class="field"><span>Reply date</span><input class="in" type="date" name="reply_date"></label>
+            <label class="field"><span>Batch / campaign</span><input class="in" name="batch"></label>
+          </div>
+          <label class="field"><span>Preview or link</span><input class="in" name="link"></label>
+          <label class="field"><span>Notes</span><textarea class="in" name="notes"></textarea></label>
+        </div>
+        <div class="box" id="logBox"><span class="mono">Activity</span>
+          <ul class="log" id="log"></ul>
+          <div class="addlog"><input class="in" id="logText" placeholder="Add a note to the timeline…"><button class="btn" type="button" id="logAdd">Add</button></div>
+        </div>
+        <div class="foot"><button class="btn danger" type="button" id="delBtn">Delete</button><button class="btn solid" type="submit" id="saveBtn">Save</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+const STAGES=[
+ ["Drafted","#8A8A8A"],["Sent","#2F5FD0"],["Followed up","#6A4FD8"],["Replied","#C27C0E"],["Interested","#F0561D"],
+ ["Preview sent","#D94E8F"],["Meeting booked","#0E9AA7"],["Won","#1F8A4C"],["Not interested","#9B9B9B"],["No reply","#B5B5B5"],["Bounced","#C8352B"]];
+const OPEN=["Drafted","Sent","Followed up","Replied","Interested","Preview sent","Meeting booked"];
+const HOT=["Replied","Interested","Preview sent","Meeting booked"];
+const CHANNELS=["Email","WhatsApp","Instagram","Facebook","Phone","Walk-in","Referral"];
+const FOLLOW_GAP=6;
+const color=s=>(STAGES.find(x=>x[0]===s)||[0,"#8A8A8A"])[1];
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const addDays=(iso,n)=>{const d=new Date(iso+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const fmt=iso=>iso?new Date(iso+"T12:00:00").toLocaleDateString("en-ZA",{day:"numeric",month:"short"}):"";
+const waNum=p=>{let d=String(p||"").replace(/\D/g,"");if(d.startsWith("0"))d="27"+d.slice(1);return d.length>=10?d:""};
+
+let leads=[], view="due", sortK="next_action", sortDir=1, current=null;
+
+async function api(a,{method="GET",body,id}={}){
+  const r=await fetch(`/api/crm?a=${a}${id?"&id="+id:""}`,{method,headers:{"Content-Type":"application/json","x-crm":"1"},body:body?JSON.stringify(body):undefined,credentials:"same-origin"});
+  let j={};try{j=await r.json()}catch(_){}
+  if(r.status===401&&a!=="login"){showLogin();throw new Error("auth")}
+  if(!r.ok){const e=new Error(j.message||j.error||"Something went wrong");e.code=j.error;throw e}
+  return j;
+}
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function showLogin(){$("#app").hidden=true;$("#login").hidden=false;setTimeout(()=>$("#pw").focus(),50)}
+async function showApp(){$("#login").hidden=true;$("#app").hidden=false;await load()}
+
+$("#loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();$("#loginErr").textContent="";$("#loginBtn").disabled=true;
+  try{await api("login",{method:"POST",body:{password:$("#pw").value}});$("#pw").value="";await showApp()}
+  catch(err){$("#loginErr").textContent=err.message==="auth"?"Wrong password":err.message}
+  finally{$("#loginBtn").disabled=false}
+});
+$("#logoutBtn").onclick=async()=>{try{await api("logout",{method:"POST"})}catch(_){}leads=[];showLogin()};
+
+async function load(){
+  try{const j=await api("leads");leads=j.leads||[];$("#setup").hidden=true;render()}
+  catch(e){if(e.code==="setup"){$("#setup").hidden=false;$("#setupMsg").textContent=e.message}else if(e.message!=="auth")toast(e.message)}
+}
+function isDue(l){return OPEN.includes(l.status)&&l.next_action&&l.next_action<=today()}
+function counts(){
+  const c={all:leads.length,due:leads.filter(isDue).length,hot:leads.filter(l=>HOT.includes(l.status)).length};
+  STAGES.forEach(([s])=>c[s]=leads.filter(l=>l.status===s).length);return c;
+}
+function render(){
+  const c=counts(), t=today();
+  const contacted=leads.filter(l=>l.status!=="Drafted").length;
+  const replied=leads.filter(l=>l.reply_date||["Replied","Interested","Preview sent","Meeting booked","Won","Not interested"].includes(l.status)).length;
+  const won=leads.filter(l=>l.status==="Won"), wonVal=won.reduce((n,l)=>n+(+l.deal_value||0),0);
+  const week=addDays(t,-6), thisWeek=leads.filter(l=>l.last_contact&&l.last_contact>=week).length;
+  const k=[
+    ["due","Due today",c.due,c.due?"follow-ups waiting":"all caught up",c.due>0],
+    ["all","Leads",c.all,`${c.Drafted} still to send`],
+    ["week","Touched this week",thisWeek,"emails, WhatsApps, calls"],
+    ["replies","Reply rate",contacted?Math.round(replied/contacted*100)+"%":"0%",`${replied} of ${contacted} replied`],
+    ["hot","Hot",c.hot,"replied, interested, preview"],
+    ["Won","Won",won.length,wonVal?"R"+wonVal.toLocaleString("en-ZA"):"first one's coming"]];
+  $("#kpis").innerHTML=k.map(([v,l,n,s,alert])=>`<button class="kpi${alert?" alert":""}" data-v="${v}"><span class="mono">${l}</span><b>${n}</b><small>${esc(s)}</small></button>`).join("");
+  const tot=leads.length||1;
+  $("#fbar").innerHTML=STAGES.filter(([s])=>c[s]).map(([s,col])=>`<i title="${s}: ${c[s]}" style="width:${c[s]/tot*100}%;background:${col}"></i>`).join("");
+  $("#flegend").innerHTML=STAGES.filter(([s])=>c[s]).map(([s,col])=>`<span><i style="background:${col}"></i>${s} ${c[s]}</span>`).join("");
+  $("#funnelNote").textContent=`${c.all} leads`;
+  const tabs=[["due","Due now",c.due],["hot","Hot",c.hot],["all","All",c.all],...STAGES.map(([s])=>[s,s,c[s]]).filter(x=>x[2])];
+  $("#tabs").innerHTML=tabs.map(([v,l,n])=>`<button class="tab" data-v="${esc(v)}" aria-pressed="${view===v}">${esc(l)}<span class="n">${n}</span></button>`).join("");
+  const ch=[...new Set(leads.map(l=>l.channel).filter(Boolean))], ba=[...new Set(leads.map(l=>l.batch).filter(Boolean))];
+  syncSelect($("#fChannel"),ch,"All channels");syncSelect($("#fBatch"),ba,"All batches");
+  renderRows();
+}
+function syncSelect(sel,vals,first){const cur=sel.value;sel.innerHTML=`<option value="">${first}</option>`+vals.sort().map(v=>`<option${v===cur?" selected":""}>${esc(v)}</option>`).join("")}
+function filtered(){
+  const q=$("#q").value.trim().toLowerCase(), ch=$("#fChannel").value, ba=$("#fBatch").value;
+  let L=leads.filter(l=>{
+    if(view==="due"&&!isDue(l))return false;
+    if(view==="hot"&&!HOT.includes(l.status))return false;
+    if(view==="week"){if(!(l.last_contact&&l.last_contact>=addDays(today(),-6)))return false}
+    if(view==="replies"&&!(l.reply_date||["Replied","Interested","Preview sent","Meeting booked","Won","Not interested"].includes(l.status)))return false;
+    if(!["due","hot","all","week","replies"].includes(view)&&l.status!==view)return false;
+    if(ch&&l.channel!==ch)return false; if(ba&&l.batch!==ba)return false;
+    if(q&&![l.business,l.contact,l.email,l.phone,l.town,l.type,l.notes,l.subject,l.batch].join(" ").toLowerCase().includes(q))return false;
+    return true;});
+  L.sort((a,b)=>{let x=a[sortK],y=b[sortK];if(x==null||x==="")return 1;if(y==null||y==="")return -1;if(typeof x==="number"||typeof y==="number")return (x-y)*sortDir;return String(x).localeCompare(String(y))*sortDir});
+  return L;
+}
+const ICON={Email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',WhatsApp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-4.2A8.5 8.5 0 1 1 20.5 11.5z"/></svg>',Phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>'};
+const chip=c=>`<span class="ch">${ICON[c]||ICON.Email}${esc(c||"")}</span>`;
+const pill=s=>`<span class="pill" style="color:${color(s)};background:color-mix(in srgb,${color(s)} 12%,transparent)"><i></i>${esc(s)}</span>`;
+function dueCell(l){if(!l.next_action||!OPEN.includes(l.status))return `<span class="dim">${l.next_action?fmt(l.next_action):"-"}</span>`;const t=today();const cls=l.next_action<t?"over":l.next_action===t?"today":"";const lbl=l.next_action<t?"Overdue · "+fmt(l.next_action):l.next_action===t?"Today":fmt(l.next_action);return `<span class="due ${cls}">${lbl}</span>`}
+function renderRows(){
+  const L=filtered();
+  $("#rows").innerHTML=L.map(l=>`<tr data-id="${l.id}"><td class="biz"><b>${esc(l.business)}</b><small>${esc([l.type,l.town].filter(Boolean).join(" · "))}</small></td><td class="who">${esc(l.contact||"")}<small>${esc(l.email||l.phone||"")}</small></td><td>${chip(l.channel)}</td><td>${pill(l.status)}</td><td class="dim">${fmt(l.last_contact)||"-"}</td><td class="dim">${l.follow_ups||0}</td><td>${dueCell(l)}</td></tr>`).join("");
+  $("#cards").innerHTML=L.map(l=>`<button class="cardrow" data-id="${l.id}"><div class="biz"><b>${esc(l.business)}</b><small>${esc([l.contact,l.town].filter(Boolean).join(" · "))}</small></div><div>${pill(l.status)}</div><div class="r2">${chip(l.channel)}<span>Last ${fmt(l.last_contact)||"-"}</span><span>Next ${dueCell(l)}</span></div></button>`).join("");
+  $("#empty").hidden=L.length>0;
+  $("#empty").textContent=view==="due"?"Nothing due. Nice work.":"No leads here.";
+  document.querySelectorAll("th").forEach(th=>th.textContent=th.textContent.replace(/ [↑↓]$/,"")+(th.dataset.k===sortK?(sortDir>0?" ↑":" ↓"):""));
+}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;view=b.dataset.v;render()});
+$("#kpis").addEventListener("click",e=>{const b=e.target.closest(".kpi");if(!b)return;view=b.dataset.v;render();$("#tabs").scrollIntoView({behavior:"smooth",block:"nearest"})});
+["#q","#fChannel","#fBatch"].forEach(s=>$(s).addEventListener("input",renderRows));
+document.querySelector("thead").addEventListener("click",e=>{const k=e.target.dataset.k;if(!k)return;sortDir=sortK===k?-sortDir:1;sortK=k;renderRows()});
+document.addEventListener("click",e=>{const r=e.target.closest("tr[data-id],.cardrow");if(r)openLead(leads.find(l=>l.id===r.dataset.id))});
+
+/* drawer */
+const F=$("#form");
+F.status.innerHTML=STAGES.map(([s])=>`<option>${s}</option>`).join("");
+F.channel.innerHTML=CHANNELS.map(c=>`<option>${c}</option>`).join("");
+function openLead(l){
+  current=l?JSON.parse(JSON.stringify(l)):{status:"Drafted",channel:"Email",follow_ups:0,log:[],next_action:today()};
+  $("#dTitle").textContent=l?l.business:"New lead";
+  for(const el of F.elements){if(!el.name)continue;el.value=current[el.name]??""}
+  $("#delBtn").hidden=!l;$("#logBox").hidden=!l;
+  renderQuick();renderLog();
+  $("#drawer").classList.add("open");$("#drawer").setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  setTimeout(()=>(l?$(".x"):F.business).focus(),30);
+}
+function closeDrawer(){$("#drawer").classList.remove("open");$("#drawer").setAttribute("aria-hidden","true");document.body.style.overflow="";current=null}
+$("#drawer").addEventListener("click",e=>{if(e.target.closest("[data-close]"))closeDrawer()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&current)closeDrawer()});
+function renderQuick(){
+  if(!current.id){$("#quick").innerHTML="";return}
+  const w=waNum(current.phone), first=(current.contact||"").split(/[ &,]/)[0];
+  const waText=encodeURIComponent(`Hi ${first||"there"}, Jay here. `);
+  $("#quick").innerHTML=[
+    current.email?`<a class="btn" href="mailto:${esc(current.email)}?subject=${encodeURIComponent("Re: "+(current.subject||current.business))}">✉ Email</a>`:"",
+    w?`<a class="btn" href="https://wa.me/${w}?text=${waText}" target="_blank" rel="noopener">WhatsApp</a>`:"",
+    current.phone?`<a class="btn" href="tel:${esc(current.phone.replace(/\s/g,""))}">Call</a>`:"",
+    `<button class="btn" type="button" data-q="follow">+ Log follow-up</button>`,
+    `<button class="btn" type="button" data-q="replied">Mark replied</button>`,
+    `<button class="btn solid" type="button" data-q="won">Won 🎉</button>`].join("");
+}
+function renderLog(){
+  const L=(current.log||[]).slice().reverse();
+  $("#log").innerHTML=L.length?L.map(x=>`<li><span>${fmt(x.at)}</span><div>${esc(x.text)}</div></li>`).join(""):`<li><span></span><div class="dim">No activity yet.</div></li>`;
+}
+function readForm(){const o={};for(const el of F.elements){if(el.name)o[el.name]=el.value.trim()}return o}
+async function save(extra={},msg="Saved"){
+  const data={...readForm(),...extra,log:extra.log||current.log||[]};
+  if(!data.business){F.business.focus();return toast("Add the business name")}
+  $("#saveBtn").disabled=true;
+  try{
+    if(current.id){const j=await api("update",{method:"PATCH",id:current.id,body:data});const i=leads.findIndex(l=>l.id===current.id);leads[i]=j.lead;current=JSON.parse(JSON.stringify(j.lead));for(const el of F.elements){if(el.name)el.value=current[el.name]??""}renderQuick();renderLog()}
+    else{data.log=[{at:today(),text:"Lead added"}];const j=await api("create",{method:"POST",body:{lead:data}});leads.unshift(j.leads[0]);openLead(j.leads[0])}
+    render();toast(msg);
+  }catch(e){if(e.message!=="auth")toast(e.message)}finally{$("#saveBtn").disabled=false}
+}
+F.addEventListener("submit",e=>{e.preventDefault();save()});
+$("#quick").addEventListener("click",e=>{
+  const q=e.target.closest("[data-q]")?.dataset.q;if(!q)return;const t=today(),log=[...(current.log||[])];
+  if(q==="follow"){const n=(+F.follow_ups.value||0)+1;log.push({at:t,text:`Follow-up ${n} sent`});save({follow_ups:n,last_contact:t,next_action:addDays(t,FOLLOW_GAP),status:["Drafted","Sent"].includes(F.status.value)?"Followed up":F.status.value,log},"Follow-up logged")}
+  if(q==="replied"){log.push({at:t,text:"They replied"});save({status:"Replied",reply_date:t,last_contact:t,next_action:t,log},"Marked as replied")}
+  if(q==="won"){log.push({at:t,text:"Won 🎉"});save({status:"Won",next_action:"",log},"Won! 🎉")}
+});
+$("#logAdd").onclick=()=>{const v=$("#logText").value.trim();if(!v)return;$("#logText").value="";save({log:[...(current.log||[]),{at:today(),text:v}]},"Note added")};
+$("#logText").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("#logAdd").click()}});
+$("#delBtn").onclick=async()=>{
+  if($("#delBtn").dataset.sure!=="1"){$("#delBtn").dataset.sure="1";$("#delBtn").textContent="Tap again to delete";setTimeout(()=>{$("#delBtn").dataset.sure="";$("#delBtn").textContent="Delete"},3000);return}
+  try{await api("delete",{method:"DELETE",id:current.id});leads=leads.filter(l=>l.id!==current.id);closeDrawer();render();toast("Deleted")}catch(e){if(e.message!=="auth")toast(e.message)}
+};
+$("#addBtn").onclick=()=>openLead(null);
+
+/* CSV */
+const COLS=["business","type","contact","email","phone","town","rating","reviews","website","channel","subject","status","first_contact","last_contact","next_action","follow_ups","reply_date","deal_value","link","batch","notes"];
+function csvCell(v){v=String(v??"");return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+$("#exportBtn").onclick=()=>{
+  const csv=[COLS.join(","),...filtered().map(l=>COLS.map(k=>csvCell(l[k])).join(","))].join("\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download=`leads-${today()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+};
+function parseCSV(t){const rows=[];let row=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===","){row.push(f);f=""}else if(c==="\n"||c==="\r"){if(c==="\r"&&t[i+1]==="\n")i++;row.push(f);rows.push(row);row=[];f=""}else f+=c}if(f||row.length){row.push(f);rows.push(row)}return rows.filter(r=>r.some(x=>x.trim()))}
+$("#importFile").addEventListener("change",async e=>{
+  const file=e.target.files[0];e.target.value="";if(!file)return;
+  const rows=parseCSV(await file.text());if(rows.length<2)return toast("That file looks empty");
+  const head=rows[0].map(h=>h.trim().toLowerCase().replace(/[^a-z_]/g,"_"));
+  const list=rows.slice(1).map(r=>{const o={};head.forEach((h,i)=>{if(COLS.includes(h))o[h]=r[i]});o.log=[{at:today(),text:"Imported"}];return o}).filter(o=>o.business);
+  if(!list.length)return toast("No rows with a 'business' column");
+  try{const j=await api("create",{method:"POST",body:{leads:list}});leads=[...j.leads,...leads];render();toast(`Imported ${j.leads.length} leads`)}catch(err){if(err.message!=="auth")toast(err.message)}
+});
+
+/* boot */
+api("me").then(showApp).catch(e=>{if(e.code==="setup"){$("#login").hidden=true;$("#app").hidden=false;$("#setup").hidden=false;$("#setupMsg").textContent=e.message}else if(e.message!=="auth")showLogin()});
+</script>
+</body>
+</html>

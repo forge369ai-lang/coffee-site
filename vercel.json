@@ -71,6 +71,66 @@
       "dest": "/previews/drive-in-dog-parlour/index.html"
     },
     {
+      "src": "/resources/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/admin/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/admin.html"
+    },
+    {
+      "src": "/resources/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/admin/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/admin.html"
+    },
+    {
+      "src": "/resources/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/admin/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/admin.html"
+    },
+    {
       "handle": "filesystem"
     }
   ]

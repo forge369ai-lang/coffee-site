@@ -47,6 +47,8 @@ p{margin:0;max-width:62ch}
 :focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
 
 /* header */
+.navlink{font-weight:600;font-size:16px;text-decoration:none;padding:8px 6px;border-bottom:2px solid transparent}.navlink:hover{border-color:var(--cobalt)}
+@media (max-width:600px){.top nav a[href="/scan"]{display:none}.navlink{font-size:15px;padding:8px 2px}}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
 .brand{font-family:var(--f-display);font-weight:800;font-stretch:120%;font-size:20px;letter-spacing:-.01em;text-decoration:none}
@@ -248,7 +250,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <div class="prog" id="prog"></div>
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">Jay Steenkamp<span>.</span></a>
-  <nav style="display:flex;gap:10px;align-items:center"><a class="btn" href="/scan"><span class="lg">Free online score</span><span class="sm">Free score</span></a><a class="btn solid" href="#talk"><span class="lg">Book a free audit</span><span class="sm">Book audit</span></a></nav>
+  <nav style="display:flex;gap:10px;align-items:center"><a class="navlink" href="/resources">Resources</a><a class="btn" href="/scan"><span class="lg">Free online score</span><span class="sm">Free score</span></a><a class="btn solid" href="#talk"><span class="lg">Book a free audit</span><span class="sm">Book audit</span></a></nav>
 </div></header>
 
 <main id="top">
