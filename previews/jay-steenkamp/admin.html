@@ -366,7 +366,7 @@ function renderQuick(){
   const waText=encodeURIComponent(`Hi ${first||"there"}, Jay here. `);
   $("#quick").innerHTML=[
     current.email?`<a class="btn" href="mailto:${esc(current.email)}?subject=${encodeURIComponent("Re: "+(current.subject||current.business))}">✉ Email</a>`:"",
-    w?`<a class="btn" href="https://wa.me/${w}?text=${waText}" target="_blank" rel="noopener">WhatsApp</a>`:"",
+    w?`<a class="btn" href="${/^https:\/\/wa\.me\/\d+\?text=/.test(current.link||"")?esc(current.link):`https://wa.me/${w}?text=${waText}`}" target="_blank" rel="noopener">WhatsApp${/^https:\/\/wa\.me\//.test(current.link||"")?" (message ready)":""}</a>`:"",
     current.phone?`<a class="btn" href="tel:${esc(current.phone.replace(/\s/g,""))}">Call</a>`:"",
     `<button class="btn" type="button" data-q="follow">+ Log follow-up</button>`,
     `<button class="btn" type="button" data-q="replied">Mark replied</button>`,
