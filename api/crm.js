@@ -61,7 +61,7 @@ function clean(obj) {
 async function sb(path, opts = {}) {
   const r = await fetch(`${URL_}/rest/v1/${path}`, {
     ...opts,
-    headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json', Prefer: 'return=representation', ...(opts.headers || {}) }
+    headers: { apikey: KEY, ...(KEY.startsWith('eyJ') ? { Authorization: `Bearer ${KEY}` } : {}), 'Content-Type': 'application/json', Prefer: 'return=representation', ...(opts.headers || {}) }
   });
   const text = await r.text();
   let data; try { data = text ? JSON.parse(text) : null; } catch { data = text; }
