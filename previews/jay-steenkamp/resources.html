@@ -167,8 +167,44 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div>
 
 <script>
-const CATS=["Google & reviews","WhatsApp","Sales & follow-ups","Marketing","AI prompts","Automation","Websites"];
+const CATS=["Claude 101","Google & reviews","WhatsApp","Sales & follow-ups","Marketing","AI prompts","Automation","Websites"];
 const R=[
+{id:"claude-start-here",cat:"Claude 101",title:"Claude 101: start here",sum:"Most people use about 2% of Claude, like an expensive Google. The whole series in four levels, from first prompt to building your own tools.",time:"2 min",tags:["Series","New"],
+ intro:"Same subscription, very different results. It's not the tool, it's how you use it. Work through the levels in order and pick one thing to set up today.",
+ blocks:[
+  {t:"kv",h:"The four levels",rows:[["Beginner","The 10/80/10 rule, context prompts, uploading files, questions first"],["Novice","Memory, importing memory, finished files, the right model for the job"],["Intermediate","Connectors, Claude in Excel and Chrome, Claude on your computer, skills"],["Pro","Designing and building your own tools, skill chains, scheduled tasks"]]},
+  {t:"steps",h:"Signs you're only using 2%",items:[["You open it, ask one question and close the tab",""],["Tomorrow you start again from zero",""],["You copy its answer into another app to finish the job",""]]},
+  {t:"tip",x:"New parts are added as the reels come out. Start with the 10/80/10 rule below."}
+ ]},
+{id:"claude-10-80-10",cat:"Claude 101",title:"The 10/80/10 rule",sum:"Why your AI work feels like slop, and the one habit that fixes it. Part 1 of Claude 101.",time:"2 min",tags:["Part 1","Most used"],
+ intro:"Think of it like building a house: foundation, then walls and roof, then the finishing touches. Skip the foundation and the whole thing falls over.",
+ blocks:[
+  {t:"kv",h:"The rule",rows:[["First 10% · you","Give it the context: who you are, what it's for, your limits"],["Middle 80% · Claude","Does the heavy lifting"],["Last 10% · you","Check it and polish it"]]},
+  {t:"steps",h:"The last 10%, every time",items:[["Check the facts","Names, numbers, dates and prices."],["Fix what's off","Cut anything that isn't true for your business."],["Make it sound like you","Your words, your tone. Never just copy and paste."]]},
+  {t:"tip",x:"That's the difference between AI slop and work done with AI."}
+ ]},
+{id:"claude-context-prompts",cat:"Claude 101",title:"Context prompts: the 4 things Claude needs",sum:"Claude isn't bad at answers. It just doesn't know your business. A fill-in-the-blanks template that fixes that. Part 2.",time:"2 min",tags:["Part 2","Template"],
+ intro:"Every good prompt answers four things. Thirty seconds of context, way better answers.",
+ blocks:[
+  {t:"steps",h:"The 4 things",items:[["Who you are","Your business and your customers."],["What it's for","The job, and where it will be used."],["Your limits","Budget, length, things to avoid."],["What good looks like","Tone, format, or an example."]]},
+  {t:"tpl",h:"The template",lbl:"Fill in the blanks",x:"I'm a [what you do] in [your town].\nI need [the job] for [where it'll be used].\nKeep it [length / limits / things to avoid].\nGood looks like [tone, format or an example]."},
+  {t:"tpl",h:"Example",lbl:"A barbershop win-back message",x:"I run a barbershop in a small town. Write a WhatsApp to clients who haven't booked in 2 months. Under 40 words, no discounts. Friendly, like a mate, one emoji max."},
+  {t:"tip",x:"Save the template in your phone's notes and paste it in every time."}
+ ]},
+{id:"claude-upload-files",cat:"Claude 101",title:"Show it, don't explain it",sum:"Stop typing out what Claude can just look at. Screenshots, PDFs, spreadsheets, quotes and your notebook. Part 3.",time:"2 min",tags:["Part 3","AI prompt"],
+ intro:"Uploading the real thing beats describing it. One photo, zero typing.",
+ blocks:[
+  {t:"steps",h:"Things you can drop in",items:[["Screenshots","An error message, a competitor's page, a WhatsApp chat."],["PDFs and contracts","Ask what to watch out for."],["Spreadsheets","Ask what stands out, or for a summary."],["Quotes and invoices","Ask if it's fair and what's missing."],["A photo of your notebook","Your handwriting is fine."]]},
+  {t:"tpl",h:"Got a quote?",lbl:"Attach a photo, then ask",x:"Is this quote fair? What's missing that I should ask about before I accept?"},
+  {t:"tpl",h:"Try it tonight",lbl:"Attach a photo of your notes",x:"Turn these notes into a to-do list for this week, sorted by urgent, this week and later."}
+ ]},
+{id:"claude-questions-first",cat:"Claude 101",title:"Questions first",sum:"One line that ends the “no, try again” loop. Claude asks what it needs before it starts. Part 4.",time:"1 min",tags:["Part 4","AI prompt"],
+ intro:"Instead of guessing what you left out, Claude asks. You answer once, and it gets it right.",
+ blocks:[
+  {t:"tpl",h:"Add this to your prompt",lbl:"The one line",x:"Before you start, ask me any questions you need."},
+  {t:"tpl",h:"Example",lbl:"A flyer for a market stall",x:"Write a flyer for my bakery's Saturday market stall. Before you start, ask me any questions you need."},
+  {t:"tip",x:"Use it for anything you'd brief a person on: flyers, emails, plans and quotes."}
+ ]},
 {id:"google-reviews",cat:"Google & reviews",title:"Get 10 Google reviews this month",sum:"No begging, no awkwardness. When to ask, the exact message, and the link that opens the review box directly.",time:"3 min",tags:["Template","Most used"],
  intro:"Three happy customers a week, for four weeks, is 12 new reviews. Here's how to make asking feel natural.",
  blocks:[
