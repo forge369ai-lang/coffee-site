@@ -48,6 +48,7 @@ p{margin:0;max-width:62ch}
 
 /* header */
 .navlink{font-weight:600;font-size:16px;text-decoration:none;padding:8px 6px;border-bottom:2px solid transparent}.navlink:hover{border-color:var(--cobalt)}
+@media (max-width:440px){.top nav a[href="/resources"]{display:none}}
 @media (max-width:600px){.top nav a[href="/scan"]{display:none}.navlink{font-size:15px;padding:8px 2px}}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
@@ -216,7 +217,24 @@ p{margin:0;max-width:62ch}
 .contact .num{font-family:var(--f-mono);font-size:16px;user-select:all}
 .contact button{font:600 14px var(--f-body);border:0;border-radius:999px;padding:8px 14px;background:var(--ink);color:var(--paper);cursor:pointer}
 footer{border-top:1px solid var(--line)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:26px;color:var(--ink-2);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:32px;color:var(--ink-2);font-size:15px}
+footer .cols{display:flex;gap:clamp(24px,5vw,64px);flex-wrap:wrap}
+footer .col{display:grid;gap:6px;align-content:start}
+footer .col b{color:var(--ink);font-weight:600}
+footer a{text-decoration:none}footer a:hover{color:var(--cobalt)}
+/* faq */
+.faq{padding-block:clamp(72px,10vw,130px);border-top:1px solid var(--line)}
+.faq .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,72px);align-items:start}
+.faq .grid > *{min-width:0}
+.faq .lead p{color:var(--ink-2);margin-top:20px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-family:var(--f-display);font-weight:750;font-stretch:108%;font-size:clamp(19px,1.8vw,23px);line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--f-mono);font-weight:400;font-size:24px;color:var(--cobalt);transition:transform .25s ease;flex:none}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{color:var(--ink-2);padding:0 0 22px;font-size:17px}
+@media (max-width:820px){.faq .grid{grid-template-columns:1fr}}
 
 .top .btn{white-space:nowrap}.top .sm{display:none}
 @media (max-width:560px){.top .btn{padding:9px 12px;font-size:14px}.top .brand{font-size:17px;white-space:nowrap}.top .lg{display:none}.top .sm{display:inline}.top nav{gap:6px!important}}
@@ -251,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <div class="prog" id="prog"></div>
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">Jay Steenkamp<span>.</span></a>
-  <nav style="display:flex;gap:10px;align-items:center"><a class="navlink" href="/resources">Resources</a><a class="btn" href="/scan"><span class="lg">Free online score</span><span class="sm">Free score</span></a><a class="btn solid" href="#talk"><span class="lg">Book a free audit</span><span class="sm">Book audit</span></a></nav>
+  <nav style="display:flex;gap:10px;align-items:center"><a class="navlink" href="/work">Work</a><a class="navlink" href="/resources">Resources</a><a class="btn" href="/scan"><span class="lg">Free online score</span><span class="sm">Free score</span></a><a class="btn solid" href="#talk"><span class="lg">Book a free audit</span><span class="sm">Book audit</span></a></nav>
 </div></header>
 
 <main id="top">
@@ -309,7 +327,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <!-- process -->
 <section class="process" id="process"><div class="wrap">
-  <div class="intro"><h2>How we get there.</h2><p>Four steps, in this order, every time. You see progress at each one and nothing gets built that you haven't clicked through first.</p></div>
+  <div class="intro"><h2>How I get you there.</h2><p>Four steps, in this order, every time. You see progress at each one and nothing gets built that you haven't clicked through first.</p></div>
   <div class="steps" id="steps"><div class="rail"><b id="railFill"></b></div>
     <div class="step"><span class="n mono">Step 1</span><h3>Discover</h3><p>A free 30-minute call to find where your time and money are leaking.</p></div>
     <div class="step"><span class="n mono">Step 2</span><h3>Design</h3><p>A clickable prototype, so you can feel it before a line of code is written.</p></div>
@@ -334,6 +352,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   </ul>
 </div></div></section>
 
+<!-- faq -->
+<section class="faq" id="faq"><div class="wrap"><div class="grid">
+  <div class="lead"><span class="mono" style="color:var(--flare)">Questions</span><h2 style="margin-top:16px">Before you ask.</h2><p>The things people usually want to know first. Anything else, just message me.</p></div>
+  <div>
+    <details><summary>How long does it take?</summary><p>A website is usually live in about a week once I have your logo, photos and the basics about your business. Apps and automations depend on what they need to do, and you get a clear timeline before anything starts.</p></details>
+    <details><summary>Do I own the website?</summary><p>Yes. Your domain, your content and your site belong to you. If you ever decide to move on, you take it all with you.</p></details>
+    <details><summary>What if I don't like the design?</summary><p>You see a working preview before you commit to anything. If something isn't right, tell me what to change and I'll change it before it goes live.</p></details>
+    <details><summary>Do you work with businesses outside South Africa?</summary><p>Yes. I work with businesses all over. Everything happens over email, WhatsApp and video calls, so where you are doesn't matter.</p></details>
+    <details><summary>What happens after launch?</summary><p>I look after hosting, small updates and fixes, so your site keeps working and stays current without you having to think about it.</p></details>
+    <details><summary>How do I get started?</summary><p>Send me a WhatsApp or book the free 30-minute audit below. Bring whatever you have: a logo, a few photos, your Google reviews. I can work with very little.</p></details>
+  </div>
+</div></div></section>
+
 <!-- close -->
 <section class="close" id="talk"><div class="wrap">
   <span class="mono" style="color:var(--ink-2)">Free · 30 minutes · no obligation</span>
@@ -345,7 +376,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   </div>
 </div></section>
 </main>
-<footer><div class="wrap"><span>Jay Steenkamp</span><span>Websites · Apps · Automation</span></div></footer>
+<footer><div class="wrap">
+  <div class="col"><b>Jay Steenkamp</b><span>Websites · Apps · Automation</span><span>© 2026</span></div>
+  <div class="cols">
+    <div class="col"><b>Explore</b><a href="/work">Work</a><a href="/resources">Resources</a><a href="/scan">Free online score</a></div>
+    <div class="col"><b>Contact</b><a href="mailto:jsteenkamp67@gmail.com">jsteenkamp67@gmail.com</a><a href="https://wa.me/27615826878" target="_blank" rel="noopener">WhatsApp +27 61 582 6878</a></div>
+  </div>
+</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

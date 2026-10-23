@@ -81,6 +81,16 @@
       "dest": "/previews/jay-steenkamp/resources.html"
     },
     {
+      "src": "/work/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/work.html"
+    },
+    {
       "src": "/admin/?",
       "has": [
         {
@@ -101,6 +111,16 @@
       "dest": "/previews/jay-steenkamp/resources.html"
     },
     {
+      "src": "/work/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/work.html"
+    },
+    {
       "src": "/admin/?",
       "has": [
         {
@@ -119,6 +139,16 @@
         }
       ],
       "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/work/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/work.html"
     },
     {
       "src": "/admin/?",

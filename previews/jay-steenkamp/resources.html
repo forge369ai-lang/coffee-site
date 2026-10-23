@@ -137,13 +137,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="/">Jay Steenkamp<span>.</span></a>
-  <nav><a class="btn hide-sm" href="/scan">Free score</a><a class="btn solid" href="https://wa.me/27615826878?text=Hi%20Jay%2C%20I%20found%20your%20resources%20page" target="_blank" rel="noopener">WhatsApp me</a></nav>
+  <nav><a class="navlink" href="/work" style="font-weight:600;text-decoration:none;padding:8px 6px">Work</a><a class="btn hide-sm" href="/scan">Free score</a><a class="btn solid" href="https://wa.me/27615826878?text=Hi%20Jay%2C%20I%20found%20your%20resources%20page" target="_blank" rel="noopener">WhatsApp me</a></nav>
 </div></header>
 
 <section class="hero"><div class="wrap">
   <div class="eyebrow mono"><i></i>The toolkit · free</div>
   <h1>Steal these<em>.</em></h1>
-  <p class="lede">The exact scripts, templates, prompts and checklists we use to win customers and take the repetitive work off a business. Copy them, use them today.</p>
+  <p class="lede">The exact scripts, templates, prompts and checklists I use to win customers and take the repetitive work off a business. Copy them, use them today.</p>
   <div class="stats" id="stats"></div>
 </div></section>
 
@@ -304,7 +304,7 @@ const R=[
   {t:"steps",h:"3 rules for your homepage",items:[["Say what you do in plain words","“Burst pipe? Plumber in 60 minutes” beats “Excellence in everything we do”."],["Show who you serve and where","Your town, your hours, real photos of real work."],["Give one clear next step","One big button: call, book or WhatsApp. Not five."]]},
   {t:"tip",x:"Show your homepage to a friend for 5 seconds, then ask what you sell. Their answer is your score."}
  ]},
-{id:"website-hour",cat:"Websites",title:"A website in an hour, no developer",sum:"The three free tools we use to take a business from nothing to a live website in about an hour.",time:"2 min",tags:["Tool guide"],
+{id:"website-hour",cat:"Websites",title:"A website in an hour, no developer",sum:"The three free tools I use to take a business from nothing to a live website in about an hour.",time:"2 min",tags:["Tool guide"],
  intro:"No code, no developer, no monthly design bills.",
  blocks:[
   {t:"kv",h:"The stack",rows:[["Claude","Writes the whole site for you"],["GitHub","Keeps your site's files safe"],["Vercel","Puts it live on the internet"]]},
@@ -346,7 +346,7 @@ function open(id,push=true){
   lastFocus=document.activeElement;
   $("#sh-cat").textContent=r.cat+" · "+r.time;
   $("#sh-body").innerHTML=`<h2 id="sh-title">${esc(r.title)}</h2><p class="intro">${esc(r.intro)}</p>${r.blocks.map(block).join("")}
-   <div class="cta"><h3>Want this set up for you?</h3><p>We build the website, the booking flow and the automations, so this all runs without you.</p><a class="btn" href="https://wa.me/27615826878?text=${encodeURIComponent("Hi Jay, I read \""+r.title+"\" on your resources page.")}" target="_blank" rel="noopener">WhatsApp Jay →</a></div>`;
+   <div class="cta"><h3>Want this set up for you?</h3><p>I build the website, the booking flow and the automations, so this all runs without you.</p><a class="btn" href="https://wa.me/27615826878?text=${encodeURIComponent("Hi Jay, I read \""+r.title+"\" on your resources page.")}" target="_blank" rel="noopener">WhatsApp Jay →</a></div>`;
   $("#sheet").classList.add("open");$("#sheet").setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
   $(".panel").scrollTop=0; $(".close").focus();
