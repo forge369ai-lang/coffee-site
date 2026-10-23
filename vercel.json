@@ -81,6 +81,46 @@
       "dest": "/previews/jay-steenkamp/resources.html"
     },
     {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
+    },
+    {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
+    },
+    {
       "src": "/work/?",
       "has": [
         {
@@ -109,6 +149,46 @@
         }
       ],
       "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
+    },
+    {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
     },
     {
       "src": "/work/?",
@@ -139,6 +219,46 @@
         }
       ],
       "dest": "/previews/jay-steenkamp/resources.html"
+    },
+    {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
+    },
+    {
+      "src": "/work/tidewater/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/tidewater/index.html"
+    },
+    {
+      "src": "/work/(fluff-and-fold|rye-and-honey|fernhill|flowright|velvet|bookings-dashboard|jobs-dashboard)/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/demo/$1.html"
     },
     {
       "src": "/work/?",

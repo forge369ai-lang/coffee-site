@@ -69,6 +69,11 @@ p{margin:0;max-width:62ch}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .card .meta .mono{color:var(--cobalt);white-space:nowrap}
 .card p{color:var(--ink-2);font-size:17px;margin-top:-6px}
+.card .shot.live{position:relative;aspect-ratio:16/10;border:1px solid var(--line)}
+.card .shot.live iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.card .shot .open{position:absolute;right:14px;bottom:14px;background:var(--ink);color:var(--paper);font-weight:600;font-size:14px;padding:8px 14px;border-radius:999px;opacity:0;transform:translateY(6px);transition:.25s}
+.card:hover .shot .open,.card:focus-visible .shot .open{opacity:1;transform:none}
+@media (hover:none){.card .shot .open{opacity:1;transform:none}}
 .card.wide{grid-column:1/-1}
 .card.wide .shot{aspect-ratio:1200/825}
 @media (min-width:821px){.card.wide{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:center}.card.wide .txt{display:grid;gap:14px}.card.wide p{margin:0}}
@@ -101,8 +106,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--cobalt)}
 <section class="hero"><div class="wrap">
   <span class="mono">Work · concepts across industries</span>
   <h1>What I'd build <span class="accent">for you.</span></h1>
-  <p>Concept designs for the kinds of businesses I work with every week. The names are made up, the thinking is real: every page is built around the one thing that business needs its visitors to do.</p>
-  <span class="note">Concept designs · fictional businesses</span>
+  <p>Concept sites for the kinds of businesses I work with every week. The names are made up, but every site is built around the one thing that business needs its visitors to do. They're live, so click around.</p>
+  <span class="note">Live demos · fictional businesses · click any card to try it</span>
 </div></section>
 
 <section class="wrap" aria-label="Concept websites">
@@ -113,27 +118,29 @@ footer a{text-decoration:none}footer a:hover{color:var(--cobalt)}
     <button type="button" data-f="trade" aria-pressed="false">Trades &amp; retail</button>
   </div>
   <div class="grid" id="grid">
-    <a class="card" data-k="beauty" href="/previews/jay-steenkamp/work/dog.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/dog.jpg" alt="Concept website for a dog grooming salon, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Fluff &amp; Fold</h3><span class="mono">Dog grooming</span></div><p>Booking up front, prices visible, reviews doing the selling. No more phone tag.</p></a>
-    <a class="card" data-k="beauty" href="/previews/jay-steenkamp/work/barber.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/barber.jpg" alt="Concept website for a barbershop, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Northside Barber Co</h3><span class="mono">Barbershop</span></div><p>Book a chair or check walk-in times without calling. Prices on the first screen.</p></a>
-    <a class="card" data-k="food" href="/previews/jay-steenkamp/work/bakery.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/bakery.jpg" alt="Concept website for a bakery and café, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Rye &amp; Honey</h3><span class="mono">Bakery &amp; café</span></div><p>Today's bake, online orders and cake pre-orders in one place, so the phone stops ringing at 7am.</p></a>
-    <a class="card" data-k="food" href="/previews/jay-steenkamp/work/stay.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/stay.jpg" alt="Concept website for a guesthouse, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Fernhill</h3><span class="mono">Guesthouse</span></div><p>Direct bookings with clear room prices, so fewer guests go through commission-heavy platforms.</p></a>
-    <a class="card" data-k="beauty" href="/previews/jay-steenkamp/work/nails.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/nails.jpg" alt="Concept website for a nail and beauty studio, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Velvet</h3><span class="mono">Nail &amp; beauty</span></div><p>Pick a treatment, see real work, book in a few taps. Calm, like the appointment itself.</p></a>
-    <a class="card" data-k="trade" href="/previews/jay-steenkamp/work/plumb.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/plumb.jpg" alt="Concept website for a plumbing business, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Flowright</h3><span class="mono">Plumbing</span></div><p>The emergency call button comes first. Quotes and WhatsApp sit right behind it.</p></a>
-    <a class="card" data-k="trade" href="/previews/jay-steenkamp/work/florist.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/florist.jpg" alt="Concept website for a florist, desktop and phone" loading="lazy" width="1200" height="825"></div>
-      <div class="meta"><h3>Wild Stem</h3><span class="mono">Florist</span></div><p>Same-day order cut-off front and centre, with a separate path for wedding enquiries.</p></a>
+    <a class="card" data-k="beauty" href="/work/tidewater" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/tidewater" title="Tidewater Barber Co live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Tidewater Barber Co</h3><span class="mono">Barbershop</span></div><p>Chalkboard price list, live "open now" sign and WhatsApp booking on every screen.</p></a>
+    <a class="card" data-k="beauty" href="/work/fluff-and-fold" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/fluff-and-fold" title="Fluff and Fold live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Fluff &amp; Fold</h3><span class="mono">Dog grooming</span></div><p>Pick the dog size, the groom and a free slot, and the price updates as you go. Booking takes 30 seconds.</p></a>
+    <a class="card" data-k="beauty" href="/work/velvet" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/velvet" title="Velvet live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Velvet</h3><span class="mono">Nail studio</span></div><p>Build the appointment: pick treatments and an artist, and see the time and total add up.</p></a>
+    <a class="card" data-k="food" href="/work/rye-and-honey" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/rye-and-honey" title="Rye and Honey live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Rye &amp; Honey</h3><span class="mono">Bakery &amp; café</span></div><p>A newspaper-style front page with a live "on the shelf" board and next-day pre-orders.</p></a>
+    <a class="card" data-k="food" href="/work/fernhill" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/fernhill" title="Fernhill live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Fernhill</h3><span class="mono">Guesthouse</span></div><p>A full-screen forest photo, a hotel-style availability bar and a "book direct" offer to avoid booking-site commission.</p></a>
+    <a class="card" data-k="trade" href="/work/flowright" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/flowright" title="Flowright live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Flowright</h3><span class="mono">Plumbing</span></div><p>Built for emergencies: plumbers available now, a "do we cover my area?" checker and one big call button.</p></a>
   </div>
 </section>
 
 <section class="wrap sect" aria-label="Systems">
   <h2>Behind the website.</h2>
-  <p>A site brings people in. The system behind it makes sure nobody slips through the cracks.</p>
+  <p>A site brings people in. The system behind it makes sure nobody slips through the cracks. These dashboards are live demos too, so click around.</p>
   <div class="grid">
+    <a class="card" data-k="" href="/work/bookings-dashboard" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/bookings-dashboard" title="Bookings dashboard live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Bookings dashboard</h3><span class="mono">App · demo data</span></div><p>The salon owner's morning view: today's dogs, reminders that sent themselves, and one tap to rebook every overdue client.</p></a>
+    <a class="card" data-k="" href="/work/jobs-dashboard" target="_blank" rel="noopener"><div class="shot live"><iframe src="/work/jobs-dashboard" title="Jobs, quotes and invoices live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe><span class="open">Open live demo ↗</span></div>
+      <div class="meta"><h3>Jobs, quotes &amp; invoices</h3><span class="mono">App · demo data</span></div><p>For trades: drag jobs from request to done, and overdue invoices chase themselves until they're paid.</p></a>
     <a class="card wide" href="/previews/jay-steenkamp/work/crm.jpg" target="_blank" rel="noopener"><div class="shot"><img src="/previews/jay-steenkamp/work/crm.jpg" alt="A simple CRM dashboard showing a sales pipeline, shown with demo data" loading="lazy" width="1200" height="825"></div>
       <div class="txt"><div class="meta"><h3>A CRM built around how you sell</h3><span class="mono">App · demo data</span></div>
         <p>The same kind of system I run my own business on: every lead, every follow-up and every reply in one place, with the day's to-dos at the top.</p>
@@ -159,6 +166,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--cobalt)}
   </div>
 </div></footer>
 <script>
+function fit(){document.querySelectorAll('.shot.live').forEach(b=>{const f=b.querySelector('iframe');f.style.transform='scale('+(b.clientWidth/1440)+')'})}
+fit();addEventListener('resize',fit);
 const bs=[...document.querySelectorAll('.filters button')],cs=[...document.querySelectorAll('#grid .card')];
 bs.forEach(b=>b.addEventListener('click',()=>{bs.forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.f;cs.forEach(c=>c.hidden=!(f==='all'||c.dataset.k===f))}));
 </script>

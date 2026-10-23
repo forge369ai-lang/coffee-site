@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluff &amp; Fold · Dog Grooming</title>
+<meta name="description" content="Concept website for a dog grooming salon, designed by Jay Steenkamp.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FFF4E6;--teal:#0F5C58;--teal-2:#167A73;--coral:#FF7A59;--sun:#FFC94D;--ink:#14302D;--muted:#4D6663;--card:#fff}
+*{box-sizing:border-box;margin:0}
+body{background:var(--cream);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:18px;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:.95}
+.hand{font-family:Caveat,cursive;font-weight:600;color:var(--coral);font-size:30px;line-height:1}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:24px;letter-spacing:-.03em;text-decoration:none}
+.logo b{width:38px;height:38px;border-radius:12px 12px 12px 4px;background:var(--coral);display:grid;place-items:center;color:#fff;font-size:20px}
+.links{display:flex;gap:26px;align-items:center;font-weight:500}
+.links a{text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:16px;border:0;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 4px 0 #0A3F3C;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 2px 0 #0A3F3C}
+.btn.c{background:var(--coral);box-shadow:0 4px 0 #C9553A}
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:30px 0 80px}
+.hero h1{font-size:clamp(56px,7.5vw,104px)}
+.hero h1 em{font-style:normal;color:var(--teal-2);position:relative;white-space:nowrap}
+.hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:var(--sun);z-index:-1;border-radius:4px}
+.hero p{font-size:21px;color:var(--muted);margin:24px 0 32px;max-width:30ch}
+.trust{display:flex;gap:18px;margin-top:30px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.trust span{display:flex;gap:8px;align-items:center}
+.trust i{width:26px;height:26px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-style:normal}
+.photo{position:relative}
+.photo .main{border-radius:44px 44px 44px 12px;aspect-ratio:4/5;object-fit:cover;width:100%;transform:rotate(2deg);box-shadow:0 30px 60px rgba(20,48,45,.25)}
+.sticker{position:absolute;background:var(--card);border-radius:20px;padding:14px 18px;box-shadow:0 14px 30px rgba(20,48,45,.18);font-weight:700}
+.s1{left:-36px;bottom:60px;transform:rotate(-5deg);display:flex;gap:12px;align-items:center}
+.s1 .st{color:#F2A900;letter-spacing:2px}
+.s1 small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+.s2{right:-14px;top:30px;background:var(--sun);transform:rotate(6deg);text-align:center;line-height:1.1}
+.s2 b{font-size:30px;display:block}
+/* booking */
+.book{background:var(--teal);color:#fff;border-radius:40px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;margin-bottom:90px}
+.book h2{font-size:clamp(40px,5vw,64px)}
+.book .hand{color:var(--sun);margin-top:16px;display:block}
+.book p{color:#CFE5E2;margin-top:16px}
+.panel{background:var(--card);color:var(--ink);border-radius:28px;padding:28px;display:grid;gap:22px}
+.step b{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:2px solid #E3DCD2;background:#fff;border-radius:14px;padding:10px 16px;font:inherit;font-weight:600;font-size:16px;cursor:pointer;color:var(--ink)}
+.chip small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.chip[aria-pressed=true]{border-color:var(--teal-2);background:#E6F3F1}
+.chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.sum{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:2px dashed #E3DCD2;padding-top:20px;flex-wrap:wrap}
+.sum strong{font-size:30px;letter-spacing:-.02em}
+.sum span{color:var(--muted);font-size:15px;display:block}
+/* prices */
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(40px,5vw,64px)}
+.tabs{display:flex;background:#fff;border-radius:16px;padding:5px;gap:4px}
+.tabs button{border:0;background:none;font:inherit;font-weight:700;padding:10px 18px;border-radius:12px;cursor:pointer;color:var(--muted)}
+.tabs button[aria-selected=true]{background:var(--coral);color:#fff}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:90px}
+.pc{background:#fff;border-radius:28px;padding:28px;display:grid;gap:10px;align-content:start;position:relative}
+.pc h3{font-size:30px}.pc p{color:var(--muted);font-size:16px}
+.pc .amt{font-size:46px;font-weight:800;letter-spacing:-.04em;margin-top:6px}
+.pc ul{list-style:none;padding:0;display:grid;gap:6px;font-size:16px;margin-top:6px}
+.pc li:before{content:"✓ ";color:var(--teal-2);font-weight:800}
+.pc.pop{background:var(--sun)}.pc.pop .tag{position:absolute;top:-14px;right:22px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
+/* gallery + reviews */
+.wall{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:240px 240px;gap:18px;margin-bottom:90px}
+.wall img{width:100%;height:100%;object-fit:cover;border-radius:28px}
+.wall .big{grid-row:span 2}
+.note{background:#fff;border-radius:28px;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.note q{font-size:21px;font-weight:600;line-height:1.3}
+.note span{color:var(--muted);font-size:15px}
+.note.y{background:var(--coral);color:#fff}.note.y span{color:#FFE3DA}
+footer{background:var(--ink);color:#CFE5E2;padding:56px 0 100px}
+footer .w{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer h2{color:#fff;font-size:clamp(34px,4vw,52px);max-width:14ch}
+footer .col{display:grid;gap:6px;font-size:16px}
+@media(max-width:860px){
+  .links a:not(.btn){display:none}.links .btn{padding:10px 14px;font-size:15px}
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:10px}.photo{max-width:420px;margin:0 auto;width:88%}.s1{left:-20px}
+  .book{grid-template-columns:1fr;border-radius:28px}.prices{grid-template-columns:1fr}
+  .wall{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}.wall .big{grid-column:span 2;grid-row:auto}
+}
+</style>
+</head><body>
+<div class="w">
+<nav><a class="logo" href="#"><b>🐾</b>Fluff &amp; Fold</a><div class="links"><a href="#prices">Prices</a><a href="#love">Reviews</a><a href="#book" class="btn c">Book a groom</a></div></nav>
+<section class="hero">
+  <div>
+    <span class="hand">Hello, good dog ✿</span>
+    <h1>Happy dogs. <em>Zero</em> stress.</h1>
+    <p>Gentle, unhurried grooms for nervous rescues, fluffy puppies and senior pups. One dog at a time, never in a cage.</p>
+    <a href="#book" class="btn">Find a time →</a>
+    <div class="trust"><span><i>🛁</i>Cage-free salon</span><span><i>💛</i>Fear-free trained</span><span><i>📸</i>Photo when they're done</span></div>
+  </div>
+  <div class="photo">
+    <img class="main" src="https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&q=70&w=900" alt="A fluffy white puppy running happily on grass">
+    <div class="sticker s1"><div><span class="st">★★★★★</span><small>4.9 from 180 Google reviews</small></div></div>
+    <div class="sticker s2"><b>90</b>min avg.<br>groom</div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <div><h2>Book in 30 seconds.</h2><span class="hand">no phone tag, promise</span><p>Pick your dog's size, the groom and a time. We'll confirm on WhatsApp and send a reminder the day before.</p></div>
+  <div class="panel" aria-label="Booking">
+    <div class="step"><b>1 · Your dog</b><div class="chips" data-g="size">
+      <button class="chip" aria-pressed="true" data-v="0">Small<small>Under 10kg</small></button><button class="chip" aria-pressed="false" data-v="1">Medium<small>10–25kg</small></button><button class="chip" aria-pressed="false" data-v="2">Large<small>25kg+</small></button></div></div>
+    <div class="step"><b>2 · The groom</b><div class="chips" data-g="svc">
+      <button class="chip" aria-pressed="false" data-v="0">Bath &amp; tidy</button><button class="chip" aria-pressed="true" data-v="1">Full groom</button><button class="chip" aria-pressed="false" data-v="2">Puppy intro</button></div></div>
+    <div class="step"><b>3 · When</b><div class="chips" data-g="slot" id="slots"></div></div>
+    <div class="sum"><div><span id="sumTxt">Small dog · Full groom</span><strong id="sumAmt">$65</strong></div><a class="btn c" href="#" data-demo="On the real site, this sends the booking request and confirms on WhatsApp.">Request this slot</a></div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="sec-h"><h2>Simple prices.</h2><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-s="0">Small</button><button role="tab" aria-selected="false" data-s="1">Medium</button><button role="tab" aria-selected="false" data-s="2">Large</button></div></div>
+  <div class="prices">
+    <div class="pc"><h3>Bath &amp; tidy</h3><p>For between full grooms.</p><div class="amt" data-p="40,50,65">$40</div><ul><li>Warm bath &amp; blow-dry</li><li>Nails &amp; ears</li><li>Face &amp; paw tidy</li></ul></div>
+    <div class="pc pop"><span class="tag">Most booked</span><h3>Full groom</h3><p>The whole works, styled your way.</p><div class="amt" data-p="65,80,100">$65</div><ul><li>Everything in Bath &amp; tidy</li><li>Full clip or scissor cut</li><li>Bandana &amp; a photo for you</li></ul></div>
+    <div class="pc"><h3>Puppy intro</h3><p>A slow, happy first visit.</p><div class="amt" data-p="35,35,35">$35</div><ul><li>Under 6 months</li><li>Gentle bath &amp; nail trim</li><li>Lots of treats, zero rush</li></ul></div>
+  </div>
+</section>
+
+<section id="love" class="wall">
+  <img class="big" src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=70&w=900" alt="A brown and white puppy" loading="lazy">
+  <div class="note"><q>Our anxious rescue actually wags his tail when we pull in. That says it all.</q><span>Sam &amp; Bruno · Google</span></div>
+  <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?auto=format&fit=crop&q=70&w=600" alt="A small long-coated dog lying on grass" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=70&w=600" alt="Two dogs running down a dirt road" loading="lazy">
+  <div class="note y"><q>Booked on my phone at 10pm, got a reminder, got a photo. Easiest thing all week.</q><span>Priya &amp; Mochi · Google</span></div>
+</section>
+</div>
+<footer><div class="w"><h2>Ready for a fresh, happy dog?</h2>
+  <div class="col"><b style="color:#fff">Visit</b><span>12 Willow Lane, Bayside</span><span>Tue–Sat · 8:00–16:00</span></div>
+  <div class="col"><b style="color:#fff">Talk to us</b><a href="https://wa.me/0">WhatsApp</a><a href="tel:0">(555) 010 2233</a></div>
+</div></footer>
+<script>
+const S=[['Small','Medium','Large'],['Bath & tidy','Full groom','Puppy intro']],P=[[40,50,65],[65,80,100],[35,35,35]];
+const st={size:0,svc:1,slot:0};
+const days=[...Array(5)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i+1);return d.toLocaleDateString('en-US',{weekday:'short',day:'numeric'})});
+const times=['9:00','11:00','13:30','15:00'];const full=new Set([1,4,6,9,12,15,17]);
+document.getElementById('slots').innerHTML=days.flatMap((d,i)=>times.slice(i%2,i%2+2).map((t,k)=>{const n=i*2+k;return `<button class="chip" aria-pressed="${n===0}" data-v="${n}" ${full.has(n)?'disabled':''}>${d}<small>${t}</small></button>`})).join('');
+function upd(){document.getElementById('sumAmt').textContent='$'+P[st.svc][st.size];
+  const sl=document.querySelector('[data-g=slot] [aria-pressed=true]');
+  document.getElementById('sumTxt').textContent=`${S[0][st.size]} dog · ${S[1][st.svc]}${sl?' · '+sl.childNodes[0].textContent+' '+sl.querySelector('small').textContent:''}`}
+document.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b||b.disabled)return;
+  g.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));st[g.dataset.g]=+b.dataset.v;upd()}));
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('[data-p]').forEach(a=>a.textContent='$'+a.dataset.p.split(',')[b.dataset.s])}));
+upd();
+</script>
+<script src="/previews/jay-steenkamp/demo/demo.js"></script>
+</body></html>
