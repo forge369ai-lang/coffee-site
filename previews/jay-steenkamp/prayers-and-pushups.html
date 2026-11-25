@@ -68,22 +68,24 @@ section{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--line)}
 /* hero */
 .hero{position:relative;padding:clamp(56px,9vw,110px) 0 clamp(64px,8vw,100px);border-top:0;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:780px;height:780px;background:radial-gradient(circle,rgba(240,86,29,.20),rgba(240,86,29,0) 62%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;position:relative}
-.hero h1{font-size:clamp(56px,10.5vw,136px);margin:22px 0 26px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(32px,4vw,56px);align-items:center;position:relative}
+.hero-copy{container-type:inline-size;min-width:0}
+.hero h1{font-size:clamp(40px,10.5vw,136px);font-size:min(16.8cqi,136px);margin:22px 0 26px}
+.hero h1 .ln{display:block;white-space:nowrap}
 .hero h1 .amp{display:inline-block;color:var(--flare);font-family:var(--f-serif);font-style:italic;font-weight:400;font-stretch:normal;letter-spacing:0;transform:translateY(.04em);padding:0 .04em}
 .hero .lead{margin:0 0 34px}
 .hero .lead b{color:var(--ink);font-weight:600}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
-.counter-card{background:linear-gradient(160deg,#1c1c1e,#111112);border:1px solid var(--line);border-radius:28px;padding:34px 30px;position:relative;overflow:hidden;min-width:0}
-.counter-card .big{font-family:var(--f-display);font-weight:900;font-stretch:125%;font-size:clamp(72px,9vw,112px);line-height:.9;letter-spacing:-.04em}
+.counter-card{container-type:inline-size;background:linear-gradient(160deg,#1c1c1e,#111112);border:1px solid var(--line);border-radius:28px;padding:34px 30px;position:relative;overflow:hidden;min-width:0}
+.counter-card .big{font-family:var(--f-display);font-weight:900;font-stretch:112%;font-size:clamp(48px,8vw,104px);font-size:min(25cqi,104px);white-space:nowrap;line-height:.9;letter-spacing:-.04em}
 .counter-card .big small{display:block;font-size:15px;font-family:var(--f-mono);font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-top:12px;font-stretch:normal}
 .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}
-.countdown div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center}
-.countdown b{display:block;font-family:var(--f-display);font-size:28px;font-weight:850;line-height:1}
+.countdown div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 4px;text-align:center;min-width:0}
+.countdown b{display:block;font-family:var(--f-display);font-size:clamp(20px,7cqi,28px);font-weight:850;line-height:1}
 .countdown span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
 .when{margin-top:22px;display:grid;gap:6px;font-size:15px;color:var(--ink-2)}
 .when strong{color:var(--ink);font-weight:600}
-.cross-mark{position:absolute;right:26px;top:26px;width:22px;height:30px;opacity:.9}
+.cross-mark{position:absolute;right:22px;top:20px;width:22px;height:30px;opacity:.9}
 .cross-mark::before,.cross-mark::after{content:"";position:absolute;background:var(--flare);border-radius:2px}
 .cross-mark::before{left:9px;top:0;width:4px;height:30px}
 .cross-mark::after{left:0;top:8px;width:22px;height:4px}
@@ -99,7 +101,7 @@ section{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--line)}
 
 /* progress */
 .progress-box{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(26px,4vw,44px)}
-.raised{font-family:var(--f-display);font-weight:900;font-stretch:120%;font-size:clamp(48px,7vw,84px);line-height:.95;letter-spacing:-.03em}
+.raised{font-family:var(--f-display);font-weight:900;font-stretch:112%;font-size:clamp(48px,7vw,84px);line-height:.95;letter-spacing:-.03em}
 .raised span{color:var(--ink-2);font-size:.42em;font-weight:700;letter-spacing:-.01em}
 .bar{grid-column:1/-1;height:16px;border-radius:999px;background:#0c0c0d;border:1px solid var(--line);overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#c8400f,var(--flare),#ff8a4c);border-radius:999px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
@@ -184,7 +186,9 @@ details p{color:var(--ink-2);margin:14px 0 0;max-width:65ch}
 /* final */
 .final{text-align:center;padding:clamp(90px,12vw,150px) 0;position:relative;overflow:hidden}
 .final::before{content:"";position:absolute;left:50%;top:50%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(240,86,29,.16),transparent 60%);pointer-events:none}
-.final h2{font-size:clamp(44px,8vw,104px);position:relative}
+.final h2{font-size:clamp(36px,8vw,104px);position:relative}
+.final .wrap{container-type:inline-size}
+.final h2{font-size:min(13.5cqi,104px)}
 .final .lead{margin:24px auto 36px;position:relative}
 .final .cta-row{justify-content:center;position:relative}
 
@@ -243,9 +247,9 @@ footer a:hover{color:var(--ink)}
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <div class="eyebrow rv"><span class="dot"></span><span>Live · Saturday 12 December</span><span>/</span><span>Knysna &amp; Sedgefield</span></div>
-      <h1 class="rv">Prayers <span class="amp">&amp;</span> Pushups</h1>
+      <h1 class="rv"><span class="ln">Prayers <span class="amp">&amp;</span></span><span class="ln">Pushups</span></h1>
       <p class="lead rv">In transforming my life for Christ, I've felt a strong calling to give back. On 12 December I'm doing <b><span data-pushups>3,000</span> pushups live</b> to raise money for families in Knysna and Sedgefield: groceries, fuel and Christmas presents for their kids.</p>
       <div class="cta-row rv">
         <a class="btn flare" data-donate href="#donate">Donate on BackaBuddy</a>
