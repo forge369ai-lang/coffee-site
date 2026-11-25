@@ -262,7 +262,7 @@ footer a:hover{color:var(--ink)}
       <p class="lead rv">In transforming my life for Christ, I've felt a strong calling to give back. On 12 December I'm doing <b><span data-pushups>3,000</span> pushups live</b> to raise money for families in Knysna and Sedgefield: groceries, fuel and Christmas presents for their kids.</p>
       <div class="cta-row rv">
         <a class="btn flare" data-donate href="#donate">Donate on BackaBuddy</a>
-        <a class="btn" href="#why">Watch the video</a>
+        <a class="btn" href="#why" id="watch">Watch the video</a>
       </div>
     </div>
     <aside class="counter-card rv" aria-label="Event details">
@@ -501,7 +501,8 @@ const EVENT = {
   start: "2026-12-12T08:00:00+02:00", // countdown target (SA time)
   startLabel: "",                // e.g. "08:00"; empty shows "start time to be confirmed"
   venue: "",                     // e.g. "Aries Gym, Knysna, and live on Instagram and YouTube"
-  videoUrl: "",                  // YouTube video ID or .mp4 path for the "Why" video
+  videoUrl: "/previews/jay-steenkamp/prayers-and-pushups-reel.mp4", // YouTube video ID or .mp4 path for the "Why" video
+  videoPoster: "/previews/jay-steenkamp/prayers-and-pushups-poster.jpg",
   sponsors: [                    // { name: "Aries Gym", logo: "/prayers-and-pushups/logos/aries.png", url: "https://..." }
   ],
   ledger: [                      // { date: "14 Dec", where: "Spar Knysna", what: "Groceries for a family of 5", amount: 1240 }
@@ -554,7 +555,7 @@ if (EVENT.venue) document.querySelectorAll("[data-venue]").forEach(el => el.text
 (function () {
   const v = EVENT.videoUrl; if (!v) return;
   const slot = document.getElementById("video-slot");
-  if (/\.mp4($|\?)/.test(v)) slot.innerHTML = '<video src="' + v + '" controls playsinline preload="metadata"></video>';
+  if (/\.mp4($|\?)/.test(v)) slot.innerHTML = '<video src="' + v + '" poster="' + (EVENT.videoPoster || '') + '" controls playsinline preload="none"></video>';
   else slot.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + v + '" title="Why I am doing Prayers and Pushups" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 })();
 
@@ -584,6 +585,9 @@ if (EVENT.venue) document.querySelectorAll("[data-venue]").forEach(el => el.text
   });
   document.getElementById("ledger-foot").innerHTML = '<tr><td colspan="3">Total spent so far</td><td class="amt">' + fmtR(total) + '</td></tr>';
 })();
+
+// watch button scrolls and plays
+document.getElementById("watch")?.addEventListener("click", () => { const v = document.querySelector("#video-slot video"); if (v) setTimeout(() => { try { v.play(); } catch (e) {} }, 600); });
 
 // share
 document.getElementById("share").addEventListener("click", async () => {
