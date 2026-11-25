@@ -281,6 +281,36 @@
       "dest": "/previews/jay-steenkamp/admin.html"
     },
     {
+      "src": "/prayers-and-pushups/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/prayers-and-pushups.html"
+    },
+    {
+      "src": "/prayers-and-pushups/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.jaysteenkamp.com"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/prayers-and-pushups.html"
+    },
+    {
+      "src": "/prayers-and-pushups/?",
+      "has": [
+        {
+          "type": "host",
+          "value": "jaysteenkamp.vercel.app"
+        }
+      ],
+      "dest": "/previews/jay-steenkamp/prayers-and-pushups.html"
+    },
+    {
       "handle": "filesystem"
     }
   ]
