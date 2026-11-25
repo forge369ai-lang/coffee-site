@@ -151,6 +151,15 @@ section{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--line)}
 .verse{margin-top:30px;font-family:var(--f-serif);font-style:italic;font-size:24px;line-height:1.35;color:#2b231c}
 .verse cite{display:block;font-family:var(--f-mono);font-style:normal;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#7a6a58;margin-top:10px}
 
+.band-photo{margin:0;max-width:520px;width:100%;justify-self:center}
+.band-photo img{width:100%;height:auto;border-radius:28px;box-shadow:0 30px 60px -30px rgba(60,40,20,.45)}
+.band-photo figcaption{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a7a68;text-align:center;margin-top:12px}
+.band-shop{margin-top:34px;padding:24px 26px;border-radius:20px;background:rgba(21,20,19,.06);border:1px solid rgba(21,20,19,.12)}
+.band-shop .tag{display:inline-block;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--flare);color:#fff;border-radius:999px;padding:4px 10px;margin-bottom:12px}
+.band-shop h3{color:#1a1410}
+.band-shop p{color:#4d4238;margin:8px 0 18px;font-size:16px}
+.btn.dark{background:#151413;border-color:#151413;color:var(--warm)}
+
 /* ledger */
 .ledger{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden}
 .ledger-scroll{overflow-x:auto}
@@ -368,15 +377,21 @@ footer a:hover{color:var(--ink)}
 <!-- ARMBAND -->
 <section class="band-sec">
   <div class="wrap band-grid">
-    <div class="band-visual rv" aria-hidden="true">
-      <div class="band"></div>
-      <div class="band-face"><span class="x"></span>Prayers &amp; Pushups</div>
-    </div>
+    <figure class="band-photo rv">
+      <img src="/previews/jay-steenkamp/prayers-and-pushups-armband.jpg" alt="Black silicone armband with a cross and the words Prayers and Pushups" width="1200" height="1200" loading="lazy">
+      <figcaption>Design preview. Final armband may differ.</figcaption>
+    </figure>
     <div>
       <div class="eyebrow rv">The armband</div>
       <h2 class="rv" style="margin:18px 0 22px">You are not alone.</h2>
       <p class="lead rv">Everyone we help gets an armband with a cross on it. Nothing is asked in return. It's a reminder for the hard days: you aren't alone, people are praying for you, and the Lord hears your prayers and will provide.</p>
       <blockquote class="verse rv">"My God will supply every need of yours according to his riches in glory in Christ Jesus."<cite>Philippians 4:19 · World English Bible</cite></blockquote>
+      <div class="band-shop rv">
+        <div class="tag">Coming soon</div>
+        <h3>Wear one yourself</h3>
+        <p>Soon you'll be able to get your own Prayers &amp; Pushups armband for a donation. Every rand goes into the same fund for families.</p>
+        <a class="btn dark" href="https://wa.me/27615826878?text=Hi%20Jay%2C%20please%20reserve%20a%20Prayers%20%26%20Pushups%20armband%20for%20me" target="_blank" rel="noopener">Reserve one on WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>
