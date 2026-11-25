@@ -177,7 +177,9 @@ tfoot td{font-weight:600;border-bottom:0}
 .sponsor-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .logo-slot{aspect-ratio:3/2;border:1.5px dashed rgba(242,241,238,.22);border-radius:16px;display:grid;place-items:center;color:var(--ink-2);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:10px}
-.logo-slot img{max-height:70%;max-width:80%;object-fit:contain}
+.logo-slot img{max-height:78%;max-width:80%;object-fit:contain}
+a.logo-slot{border-style:solid;border-color:var(--line);background:var(--card);transition:border-color .2s}
+a.logo-slot:hover{border-color:rgba(240,86,29,.5)}
 .ways{display:grid;gap:10px;margin:26px 0 30px;padding:0;list-style:none}
 .ways li{display:flex;gap:12px;align-items:baseline;color:var(--ink-2)}
 .ways li::before{content:"+";color:var(--flare);font-weight:700}
@@ -504,6 +506,7 @@ const EVENT = {
   videoUrl: "/previews/jay-steenkamp/prayers-and-pushups-reel.mp4", // YouTube video ID or .mp4 path for the "Why" video
   videoPoster: "/previews/jay-steenkamp/prayers-and-pushups-poster.jpg",
   sponsors: [                    // { name: "Aries Gym", logo: "/prayers-and-pushups/logos/aries.png", url: "https://..." }
+    { name: "bbe Recruitment Group", logo: "https://bberecruitment.co.za/brand/logo-192.webp", url: "https://bberecruitment.co.za/" },
   ],
   ledger: [                      // { date: "14 Dec", where: "Spar Knysna", what: "Groceries for a family of 5", amount: 1240 }
   ]
@@ -569,6 +572,8 @@ if (EVENT.venue) document.querySelectorAll("[data-venue]").forEach(el => el.text
     a.innerHTML = s.logo ? '<img src="' + s.logo + '" alt="' + s.name + '">' : s.name;
     box.appendChild(a);
   });
+  const fill = Math.max(3, Math.ceil(EVENT.sponsors.length / 3) * 3) - EVENT.sponsors.length;
+  for (let k = 0; k < fill; k++) { const d = document.createElement("div"); d.className = "logo-slot"; d.textContent = "Your logo here"; box.appendChild(d); }
 })();
 
 // ledger
