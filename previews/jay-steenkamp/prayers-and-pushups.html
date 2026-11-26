@@ -90,6 +90,28 @@ section{padding:clamp(72px,10vw,130px) 0;border-top:1px solid var(--line)}
 .cross-mark::before{left:9px;top:0;width:4px;height:30px}
 .cross-mark::after{left:0;top:8px;width:22px;height:4px}
 
+
+/* hero (video version) */
+.hero-d{padding:clamp(48px,7vw,90px) 0 clamp(56px,7vw,90px)}
+.hero-d::before{display:none}
+.hero-bg{position:absolute;inset:-60px;background:url(/previews/jay-steenkamp/prayers-and-pushups-hero-bg.jpg) center/cover;filter:blur(30px) brightness(.5) saturate(1.1);transform:scale(1.1)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,13,.65),rgba(12,12,13,.15) 70%)}
+.hero-d .hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center}
+.hero-d h1{font-size:clamp(40px,6.4vw,84px);font-size:min(11cqi,84px);line-height:1;margin:20px 0 22px;white-space:normal}
+.hero-d h1 .accent{font-family:var(--f-serif);font-style:italic;font-weight:400;font-stretch:normal;letter-spacing:0;color:var(--flare)}
+.hero-d .lead{color:#d6d2cb}
+.hero-prog{background:rgba(12,12,13,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin:0 0 26px;max-width:480px}
+.hero-prog .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink-2);margin-bottom:10px}
+.hero-prog .row b{font-family:var(--f-display);font-size:22px;color:var(--ink);font-weight:800}
+.hero-prog .row.small{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;margin:10px 0 0}
+.hero-prog .bar{height:10px}
+.hero-video{aspect-ratio:9/16;width:100%;max-width:400px;justify-self:end;border-radius:26px;overflow:hidden;position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 40px 80px -20px rgba(0,0,0,.6);display:grid;place-items:center;text-align:center;color:var(--ink-2)}
+.hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video .play{width:76px;height:76px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;margin:0 auto 16px}
+.why-solo .story{max-width:720px}
+@media (max-width:980px){.hero-d .hero-grid{grid-template-columns:1fr}.hero-video{order:-1;justify-self:center;max-width:340px}}
+@media (max-width:640px){.hero-video{max-width:230px;border-radius:20px}.hero-d{padding-top:28px}}
+
 /* ticker */
 .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:20px 0;background:var(--bg-2)}
 .ticker-track{display:flex;gap:44px;width:max-content;animation:tick 38s linear infinite}
@@ -256,31 +278,23 @@ footer a:hover{color:var(--ink)}
 <main id="top">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-d">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow rv"><span class="dot"></span><span>Live · Saturday 12 December</span><span>/</span><span>Knysna &amp; Sedgefield</span></div>
-      <h1 class="rv"><span class="ln">Prayers <span class="amp">&amp;</span></span><span class="ln">Pushups</span></h1>
-      <p class="lead rv">In transforming my life for Christ, I've felt a strong calling to give back. On 12 December I'm doing <b><span data-pushups>3,000</span> pushups live</b> to raise money for families in Knysna and Sedgefield: groceries, fuel and Christmas presents for their kids.</p>
-      <div class="cta-row rv">
-        <a class="btn flare" data-donate href="#donate">Donate on BackaBuddy</a>
-        <a class="btn" href="#why" id="watch">Watch the video</a>
+      <h1 class="rv">Every pushup is a <span class="accent">prayer</span> for a family in need.</h1>
+      <p class="lead rv">This Christmas we're helping families in Knysna and Sedgefield with groceries, fuel, clothes and gifts for their kids. On 12 December I'm doing <b><span data-pushups>3,000</span> pushups live</b> to raise the money. Press play to hear why.</p>
+      <div class="hero-prog rv">
+        <div class="row"><span><b id="h-raised">R0</b> raised of <span id="h-goal">R5,000</span></span><span><span id="h-donors">0</span> <span id="h-sup">supporters</span></span></div>
+        <div class="bar"><i id="h-bar"></i></div>
+        <div class="row small"><span id="h-days">Live on 12 December</span><span>Every rand goes to families</span></div>
       </div>
+      <div class="cta-row rv"><a class="btn flare" data-donate href="#donate">Donate on BackaBuddy</a></div>
     </div>
-    <aside class="counter-card rv" aria-label="Event details">
-      <span class="cross-mark" aria-hidden="true"></span>
-      <div class="big"><span data-pushups>3,000</span><small>pushups, one day, live</small></div>
-      <div class="countdown" aria-live="polite">
-        <div><b id="cd-d">00</b><span>Days</span></div>
-        <div><b id="cd-h">00</b><span>Hours</span></div>
-        <div><b id="cd-m">00</b><span>Min</span></div>
-        <div><b id="cd-s">00</b><span>Sec</span></div>
-      </div>
-      <div class="when">
-        <div><strong>When:</strong> Saturday 12 December, <span data-starttime>start time to be confirmed</span></div>
-        <div><strong>Where:</strong> <span data-venue>live on Instagram and YouTube</span></div>
-      </div>
-    </aside>
+    <div class="hero-video rv" id="video-slot">
+      <div><div class="play"></div>Jay's video is coming soon</div>
+    </div>
   </div>
 </section>
 
@@ -310,10 +324,7 @@ footer a:hover{color:var(--ink)}
 
 <!-- WHY -->
 <section id="why">
-  <div class="wrap why-grid">
-    <div class="video rv" id="video-slot">
-      <div><div class="play"></div>Jay's video is coming soon</div>
-    </div>
+  <div class="wrap narrow why-solo">
     <div class="story">
       <div class="eyebrow rv" style="margin-bottom:22px">Why I'm doing this</div>
       <p class="first rv">This year I made a decision to change my life. My health, my habits, the way I show up for my family.</p>
@@ -538,6 +549,13 @@ if (EVENT.venue) document.querySelectorAll("[data-venue]").forEach(el => el.text
   bar.parentElement.setAttribute("aria-valuenow", pct);
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { bar.style.width = Math.max(pct, 1.5) + "%"; io.disconnect(); } }), { threshold: .4 });
   io.observe(bar);
+  const hr = document.getElementById("h-raised");
+  if (hr) {
+    hr.textContent = fmtR(EVENT.raised);
+    document.getElementById("h-goal").textContent = fmtR(EVENT.goal);
+    document.getElementById("h-donors").textContent = fmtN(EVENT.donors); document.getElementById("h-sup").textContent = EVENT.donors === 1 ? "supporter" : "supporters";
+    const hb = document.getElementById("h-bar"); setTimeout(() => { hb.style.width = Math.max(pct, 1.5) + "%"; }, 400);
+  }
 })();
 
 // countdown
@@ -545,10 +563,12 @@ if (EVENT.venue) document.querySelectorAll("[data-venue]").forEach(el => el.text
   const t = new Date(EVENT.start).getTime();
   const pad = n => String(n).padStart(2, "0");
   const ids = ["d", "h", "m", "s"].map(k => document.getElementById("cd-" + k));
+  const hd = document.getElementById("h-days");
   function tick() {
     let s = Math.max(0, Math.floor((t - Date.now()) / 1000));
     const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
-    v.forEach((x, i) => ids[i].textContent = pad(x));
+    v.forEach((x, i) => { if (ids[i]) ids[i].textContent = pad(x); });
+    if (hd) hd.textContent = s > 86400 ? v[0] + " days to go" : (s > 0 ? "Live today" : "Thank you for giving");
     if (s === 0) clearInterval(iv);
   }
   tick(); const iv = setInterval(tick, 1000);
